@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Менеджер профилей</string>
+
+    // Common text
+    <string name="accept">Принять</string>
+    <string name="cancel">Отменить</string>
+    <string name="text_current">Текущий:</string>
+
+    // Select MODE dialog
+    <string name="select_mode_title">Выберите режим</string>
+    <string name="mode_day_title">День</string>
+    <string name="mode_night_title">Ночь</string>
+
+    // Preference activity
+    <string name="preference_modes">Режимы</string>
+    <string name="preference_tools">Инструменты</string>
+    <string name="preference_widget">Виджет</string>
+    // Tools
+    <string name="tools_notification_caption">ЗНАЧОК УВЕДОМЛЕНИЙ</string>
+    <string name="tools_notification_title">Значок в области уведомлений</string>
+    <string name="tools_notification_desc">Отображать значок и статус в области уведомлений</string>
+    <string name="tools_reserving_caption">РЕЗЕРВНОЕ КОПИРОВАНИЕ</string>
+    <string name="tools_reserving_export_title">Экспорт режимов</string>
+    <string name="tools_reserving_export_desc">Экспорт режимов в файл</string>
+    <string name="tools_reserving_import_title">Импорт режимов</string>
+    <string name="tools_reserving_import_desc">Импорт режимов из файла</string>
+    <string name="tools_default_caption">РЕЖИМЫ ПО УМОЛЧАНИЮ</string>
+    <string name="tools_default_title">Восстановление режимов</string>
+    <string name="tools_default_desc">Восстановить режимы по умолчанию</string>
+    // Widget
+    <string name="widget_notification_type_title">Тип уведомления</string>         // Тип уведомления
+    <string name="widget_notification_type_desc_full">Полный</string>
+    <string name="widget_notification_type_desc_short">Краткий</string>
+    <string name="widget_notification_type_desc_none">Без уведомлений</string>
+    <string name="widget_background_color_title">Цвет фона</string>                // Цвет фона
+    <string name="widget_background_color_white">Белый</string>
+    <string name="widget_background_color_grey">Серый</string>
+    <string name="widget_background_color_black">Чёрный</string>
+    <string name="widget_background_color_none">Без цвета</string>
+    <string name="widget_transparency_title">Прозрачность фона</string>                 // Прозрачность
+    <string name="widget_transparency_none">Полная непрозрачность</string>
+    <string name="widget_transparency_middle">Прозрачность</string>
+    <string name="widget_transparency_full">Полная прозрачность</string>
+
+</resources>

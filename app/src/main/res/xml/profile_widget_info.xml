@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/profile_widget_day"
+    android:minWidth="30dp"
+    android:resizeMode="none"
+    android:minHeight="30dp"
+    android:previewImage="@drawable/mode_day"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen|keyguard"/>
