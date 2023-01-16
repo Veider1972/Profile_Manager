@@ -5,6 +5,10 @@
     <string name="accept">Принять</string>
     <string name="cancel">Отменить</string>
     <string name="text_current">Текущий:</string>
+    <string name="text_not_set">Не задан</string>
+    <string name="text_minutes">мин.</string>
+    <string name="text_seconds">сек.</string>
+    <string name="text_never">никогда</string>
 
     // Select MODE dialog
     <string name="select_mode_title">Выберите режим</string>
@@ -16,15 +20,15 @@
     <string name="preference_tools">Инструменты</string>
     <string name="preference_widget">Виджет</string>
     // Tools
-    <string name="tools_notification_caption">ЗНАЧОК УВЕДОМЛЕНИЙ</string>
+    <string name="tools_notification_caption">Значок уведомлений</string>
     <string name="tools_notification_title">Значок в области уведомлений</string>
     <string name="tools_notification_desc">Отображать значок и статус в области уведомлений</string>
-    <string name="tools_reserving_caption">РЕЗЕРВНОЕ КОПИРОВАНИЕ</string>
+    <string name="tools_reserving_caption">Резервное копирование</string>
     <string name="tools_reserving_export_title">Экспорт режимов</string>
     <string name="tools_reserving_export_desc">Экспорт режимов в файл</string>
     <string name="tools_reserving_import_title">Импорт режимов</string>
     <string name="tools_reserving_import_desc">Импорт режимов из файла</string>
-    <string name="tools_default_caption">РЕЖИМЫ ПО УМОЛЧАНИЮ</string>
+    <string name="tools_default_caption">Режимы по умолчанию</string>
     <string name="tools_default_title">Восстановление режимов</string>
     <string name="tools_default_desc">Восстановить режимы по умолчанию</string>
     // Widget
@@ -41,5 +45,79 @@
     <string name="widget_transparency_none">Полная непрозрачность</string>
     <string name="widget_transparency_middle">Прозрачность</string>
     <string name="widget_transparency_full">Полная прозрачность</string>
+
+    // Mode Editor
+    <string name="mode_editor_info_tab_name">Информация</string>
+    <string name="mode_editor_sounds_tab_name">Звуки</string>
+    <string name="mode_editor_connections_tab_name">Соединения</string>
+    <string name="mode_editor_other_tab_name">Прочее</string>
+
+    // InfoTab
+    <string name="profile_name_title">Название профиля</string>
+    <string name="profile_widget_mark_color_title">Цвет значка виджета</string>
+    <string name="profile_widget_ring_color_title">Цвет кольца виджета</string>
+    <string name="profile_widget_symbol_color_blue">Синий</string>
+    <string name="profile_widget_symbol_color_green">Зелёный</string>
+    <string name="profile_widget_symbol_color_yellow">Жёлтый</string>
+    <string name="profile_widget_symbol_color_orange">Оранжевый</string>
+    <string name="profile_widget_symbol_color_red">Красный</string>
+    <string name="profile_widget_symbol_color_purple">Фиолетовый</string>
+    <string name="profile_use_phone_settings_title">Использовать настройки телефона</string>
+    <string name="profile_use_phone_settings_desc">Использовать текущие настройки телефона для создания данного профиля</string>
+    <string name="profile_copy_from_other_settings_title">Копировать из другого профиля</string>
+    <string name="profile_copy_from_other_settings_desc">Скопировать все настройки из другого профиля</string>
+    <string name="profile_widget_symbol_title">Значок виджета</string>
+
+    // SoundsTab
+    <string name="profile_vibration_title">Управление вибрацией</string>
+    <string name="profile_vibration_desc">Отметьте, чтобы профиль управлял настройками вибрации</string>
+    <string name="profile_vibration">Вибрация</string>
+    <string name="profile_volume_title">Управление звуком</string>
+    <string name="profile_volume_desc">Отметьте, чтобы профиль управлял уровнем громкости мелодии вызова</string>
+    <string name="profile_volume">Громкость</string>
+    <string name="profile_volume_common_desc">(Общий)</string>
+    <string name="profile_volume_common">Общая громкость</string>
+    <string name="profile_volume_ring">Громкость мелодии звонка</string>
+    <string name="profile_volume_notifications">Громкость уведомлений</string>
+    <string name="profile_volume_media">Громкость мультимедиа</string>
+    <string name="profile_volume_alarm">Громкость будильника</string>
+    <string name="profile_call_melody_title">Изменять звук вызова</string>
+    <string name="profile_call_melody_desc">Отметьте, чтобы профиль изменял стандартный звук вызова</string>
+    <string name="profile_call_melody">Звук вызова</string>
+    <string name="profile_sms_title">Изменять звук уведомлений</string>
+    <string name="profile_sms_desc">Отметьте, чтобы профиль изменял стандартный звук уведомления</string>
+    <string name="profile_sms_melody">Звук уведомления</string>
+
+    // ConnectionsTab
+    <string name="profile_wifi_title">Управление Wi-Fi</string>
+    <string name="profile_wifi_desc">Отметьте, чтобы профиль управлял модулем Wi-Fi</string>
+    <string name="profile_wifi">Wi-Fi</string>
+    <string name="profile_mobile_data_title">Управление мобильными данными</string>
+    <string name="profile_mobile_data_desc">Отметьте, чтобы профиль управлял модулем мобильными данными</string>
+    <string name="profile_mobile_data">Мобильные данные</string>
+    <string name="profile_bluetooth_title">Управление Bluetooth</string>
+    <string name="profile_bluetooth_desc">Отметьте, чтобы профиль управлял Bluetooth модулем</string>
+    <string name="profile_bluetooth">Bluetooth</string>
+    <string name="profile_access_point_title">Управление точкой доступа Wi-Fi</string>
+    <string name="profile_access_point_desc">Отметьте, чтобы профиль управлял точкой доступа Wi-Fi</string>
+    <string name="profile_access_point">Точка доступа Wi-Fi</string>
+
+    // OtherTab
+    <string name="profile_screen_timeout_title">Управление тайм-аутом экрана</string>
+    <string name="profile_screen_timeout_desc">Отметьте, чтобы профиль изменял тайм-аут экрана</string>
+    <string name="profile_screen_timeout">Тайм-аут экрана</string>
+    <string name="profile_screen_brightness_title">Управление яркостью</string>
+    <string name="profile_screen_brightness_desc">Отметьте, чтобы профиль изменял яркость экрана</string>
+    <string name="profile_screen_brightness">Яркость экрана</string>
+    <string name="profile_screen_brightness_auto">Автоматически</string>
+    <string name="profile_sync_title">Управление синхронизацией</string>
+    <string name="profile_sync_desc">Отметьте, чтобы профиль управлял автосинхронизацией</string>
+    <string name="profile_sync">Автосинхронизация</string>
+    <string name="profile_screen_rotation_title">Управление поворотом экрана</string>
+    <string name="profile_screen_rotation_desc">Отметьте, чтобы профиль управлял поворотом экрана</string>
+    <string name="profile_screen_rotation">Поворот экрана</string>
+    <string name="profile_screen_lock_title">Управление экраном блокировки</string>
+    <string name="profile_screen_lock_desc">Отметьте, чтобы профиль управлял настройками экрана блокировки</string>
+    <string name="profile_screen_lock">Экран блокировки</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package ru.veider.profilemanager.ui.preference_activity
+package ru.veider.profilemanager.ui.preference_activity.main_screen.tabs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,21 +9,19 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import org.koin.androidx.compose.koinViewModel
 import ru.veider.profilemanager.R
-import ru.veider.profilemanager.ui.preference_activity.assets.*
-import ru.veider.profilemanager.ui.preference_activity.dialogs.NotificationTypeSetDialog
-import ru.veider.profilemanager.ui.preference_activity.dialogs.TransparencySetDialog
-import ru.veider.profilemanager.ui.preference_activity.dialogs.elements.BackgroundColorSetDialog
+import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.NotificationTypeSetDialog
+import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.TransparencySetDialog
+import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogHorizontalThingDivider
+import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogUncheckedPreference
+import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.BackgroundColorSetDialog
+import ru.veider.profilemanager.ui.preference_activity.assets.enum.desc
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 
-data class WidgetState(
-    val notificationType: NotificationType = NotificationType.FULL,
-    val backgroundColor: BackgroundColor = BackgroundColor.GREY,
-    val backgroundTransparency: BackgroundTransparency = BackgroundTransparency(0)
-)
+
 
 @Composable
-fun WidgetView() {
+fun WidgetTab() {
 
     val viewModel: PreferenceViewModel = koinViewModel()
     val state by viewModel.widgetState.collectAsState()
@@ -56,18 +54,18 @@ fun WidgetView() {
                               onCancel = { showTransparencySetDialog = false })
 
     Column(modifier = Modifier.fillMaxSize()) {
-        SetUncheckedPreference(title = stringResource(id = R.string.widget_notification_type_title),
-                               desc = "${stringResource(id = R.string.text_current)} ${state.notificationType.desc}",
-                               action = {
+        DialogUncheckedPreference(title = stringResource(id = R.string.widget_notification_type_title),
+                                  desc = "${stringResource(id = R.string.text_current)} ${state.notificationType.desc}",
+                                  onClick = {
                                    showNotificationTypeSelectDialog = true
                                })
-        HorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
-        SetUncheckedPreference(title = stringResource(id = R.string.widget_background_color_title),
-                               desc = "${stringResource(id = R.string.text_current)} ${state.backgroundColor.desc}",
-                               action = { showBackgroundColorSetDialog = true })
-        HorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
-        SetUncheckedPreference(title = stringResource(id = R.string.widget_transparency_title),
-                               desc = "${stringResource(id = R.string.text_current)} ${state.backgroundTransparency.desc}",
-                               action = {showTransparencySetDialog = true})
+        DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
+        DialogUncheckedPreference(title = stringResource(id = R.string.widget_background_color_title),
+                                  desc = "${stringResource(id = R.string.text_current)} ${state.backgroundColor.desc}",
+                                  onClick = { showBackgroundColorSetDialog = true })
+        DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
+        DialogUncheckedPreference(title = stringResource(id = R.string.widget_transparency_title),
+                                  desc = "${stringResource(id = R.string.text_current)} ${state.backgroundTransparency.desc}",
+                                  onClick = {showTransparencySetDialog = true})
     }
 }

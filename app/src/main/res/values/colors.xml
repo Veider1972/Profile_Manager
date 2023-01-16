@@ -3,8 +3,8 @@
     <color name="color_on_surface">#FF000000</color>
     <color name="color_surface">#FFFFFFFF</color>
     <color name="color_primary">#FF7CAA46</color>
-    <color name="color_primary_light">#FFacdc74</color>
-    <color name="color_primary_dark">#FF4b7b16</color>
+    <color name="color_primary_light">#FFA9D477</color>
+    <color name="color_primary_dark">#FF658047</color>
     <color name="color_on_primary">#FF000000</color>
     <color name="color_primary_container">#FFC3F0A0</color>
     <color name="color_on_primary_container">#FF0B2004</color>
@@ -17,6 +17,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_error">#FFFF0000</color>
+    <color name="color_inactive">#CDCDCD</color>
 
     // Виджет
     <color name="widget_background_light_color_start">#FFD9D9D9</color>
@@ -25,4 +26,12 @@
     <color name="widget_background_dark_color_start">#FF494949</color>
     <color name="widget_background_dark_color_end">#FF888888</color>
     <color name="widget_background_dark_tint">#FF3A24B8</color>
+
+    // Цвет символа виджета
+    <color name="widget_color_blue">#0000FF</color>
+    <color name="widget_color_green">#00FF00</color>
+    <color name="widget_color_yellow">#FFFF00</color>
+    <color name="widget_color_orange">#FF7D00</color>
+    <color name="widget_color_red">#FF0000</color>
+    <color name="widget_color_purple">#7D00FF</color>
 </resources>

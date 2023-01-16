@@ -22,5 +22,5 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/mode_day"/>
+        android:src="@drawable/widget_symbol_day"/>
 </RelativeLayout>

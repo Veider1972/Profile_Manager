@@ -5,4 +5,5 @@
     <dimen name="double_padding">20.dp</dimen>
     <dimen name="spacer_width">1.dp</dimen>
     <dimen name="double_spacer_width">2.dp</dimen>
+    <dimen name="tab_indicator_height">2.dp</dimen>
 </resources>

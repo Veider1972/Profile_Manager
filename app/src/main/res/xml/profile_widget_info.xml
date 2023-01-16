@@ -4,6 +4,6 @@
     android:minWidth="30dp"
     android:resizeMode="none"
     android:minHeight="30dp"
-    android:previewImage="@drawable/mode_day"
+    android:previewImage="@drawable/widget_symbol_day"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"/>
