@@ -31,7 +31,7 @@ class SelectActivity : ComponentActivity() {
                                             putExtra(WIDGET_MODE, it.name)
                                         }
                                         sendBroadcast(updateIntent)
-                                        viewModel.setProfile(it)
+//                                        viewModel.setProfile(it)
                                         finish()
                                     },
                                     onStartPreferencesActivity = {

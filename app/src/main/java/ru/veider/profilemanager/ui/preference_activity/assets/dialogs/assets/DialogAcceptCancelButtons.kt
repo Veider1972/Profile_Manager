@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
+import ru.veider.profilemanager.ui.theme.dialogText
 
 @Composable
 fun DialogAcceptCancelButtons(accept: () -> Unit, cancel: () -> Unit) {
@@ -21,7 +22,7 @@ fun DialogAcceptCancelButtons(accept: () -> Unit, cancel: () -> Unit) {
                    )
                    .weight(0.5f)
         ) {
-            Text(text = stringResource(id = R.string.accept))
+            Text(text = stringResource(id = R.string.accept), style = dialogText)
         }
         Button(onClick = cancel,
                modifier = Modifier
@@ -31,7 +32,7 @@ fun DialogAcceptCancelButtons(accept: () -> Unit, cancel: () -> Unit) {
                    )
                    .weight(0.5f)
         ) {
-            Text(text = stringResource(id = R.string.cancel))
+            Text(text = stringResource(id = R.string.cancel), style = dialogText)
         }
     }
 }

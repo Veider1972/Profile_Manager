@@ -1,12 +1,12 @@
 package ru.veider.profilemanager.ui.preference_activity.state
 
-import android.net.Uri
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.WidgetBackgroundColor
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.WidgetBackgroundTransparency
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.WidgetNotificationType
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackgroundColor
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackgroundTransparency
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetNotificationType
 
 data class WidgetState(
-    val notificationType: WidgetNotificationType = WidgetNotificationType.FULL,
-    val backgroundColor: WidgetBackgroundColor = WidgetBackgroundColor.GREY,
-    val backgroundTransparency: WidgetBackgroundTransparency = WidgetBackgroundTransparency(0)
+    var notificationType: WidgetNotificationType = WidgetNotificationType.FULL,
+    var backgroundColor: WidgetBackgroundColor = WidgetBackgroundColor.GREY,
+    var backgroundTransparency: WidgetBackgroundTransparency = WidgetBackgroundTransparency(0),
+    var notificationOn: Boolean = false
 )

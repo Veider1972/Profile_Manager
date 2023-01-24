@@ -18,8 +18,7 @@ import ru.veider.profilemanager.R
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogAcceptCancelButtons
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.WidgetBackgroundTransparency
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.desc
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackgroundTransparency
 import ru.veider.profilemanager.ui.theme.dialogText
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
@@ -36,9 +35,6 @@ fun TransparencySetDialog(onDismiss: () -> Unit,
 
     DialogWrapper(onDismiss = onDismiss) {
         DialogPreferenceTitle(text = stringResource(id = R.string.widget_transparency_title))
-//                DialogSelector(text = BackgroundColor.WHITE.desc,
-//                               checked = (backgroundColor.value == BackgroundColor.WHITE),
-//                               onCheckedChange = { backgroundColor.value = BackgroundColor.WHITE })
         Text(text = WidgetBackgroundTransparency(transparency.value).desc,
              textAlign = TextAlign.Center,
              style = dialogText,

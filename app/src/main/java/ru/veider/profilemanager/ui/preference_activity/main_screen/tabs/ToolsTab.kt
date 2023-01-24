@@ -17,13 +17,13 @@ import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 fun ToolsTab() {
 
     val viewModel: PreferenceViewModel = koinViewModel()
-    val state by viewModel.toolsState.collectAsState()
+    val state by viewModel.widgetState.collectAsState()
     Column(modifier = Modifier.fillMaxSize()) {
         DialogPreferenceCaption(text = R.string.tools_notification_caption)
         DialogCheckedPreference(title = R.string.tools_notification_title,
                                 desc = R.string.tools_notification_desc,
-                                checked = state.notification,
-                                onClick = { viewModel.notificationChanged(!state.notification) })
+                                checked = state.notificationOn,
+                                onClick = { viewModel.notificationChanged(!state.notificationOn) })
         DialogPreferenceCaption(text = R.string.tools_reserving_caption)
         DialogUncheckedPreference(title = R.string.tools_reserving_export_title, desc = R.string.tools_reserving_export_desc, onClick = {})
         DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))

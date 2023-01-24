@@ -2,10 +2,7 @@ package ru.veider.profilemanager.ui.preference_activity.main_screen.tabs.assets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,11 +23,12 @@ fun PreferenceModeRow(icon: Int, text: String, color: Color, runMode: () -> Unit
             .weight(1f, true)
         ) {
             Row() {
-                Image(painter = painterResource(id = icon),
+                Icon(painter = painterResource(id = icon),
                       contentDescription = "",
                       modifier = Modifier
                           .height(30.dp)
-                          .padding(end = dimensionResource(id = R.dimen.double_padding))
+                          .padding(end = dimensionResource(id = R.dimen.double_padding)),
+                     tint = color
                 )
                 Text(
                     text = text,

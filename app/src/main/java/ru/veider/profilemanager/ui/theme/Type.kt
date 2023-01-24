@@ -1,7 +1,6 @@
 package ru.veider.profilemanager.ui.theme
 
 import androidx.compose.material.Typography
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -18,14 +17,17 @@ val Typography = Typography(
 )
 
 // Select Activity
-val selectDialogModeFont @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 18.sp)
+val selectDialogModeFont get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 18.sp)
 
 // Preference Activity
-val preferenceTabFont @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
-val preferenceCaption @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 17.sp)
-val preferenceTitle @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
-val preferenceDesc @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w300)), fontSize = 12.sp)
+val preferenceTabFont get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
+val preferenceCaption get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 17.sp)
+val preferenceTitle get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
+val preferenceDesc get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w300)), fontSize = 12.sp)
+val preferenceColor get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w900)), fontSize = 12.sp)
 
 // Dialogs
-val dialogText @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
-val dialogTitle @Composable get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w700)), fontSize = 17.sp)
+val dialogText get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 15.sp)
+val dialogTitle get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w700)), fontSize = 17.sp)
+val dialogTimeSelector get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 60.sp)
+val dialogTimeMinSec get() = TextStyle(fontFamily = FontFamily(Font(R.font.roboto_w400)), fontSize = 25.sp)

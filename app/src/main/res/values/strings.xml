@@ -9,6 +9,11 @@
     <string name="text_minutes">мин.</string>
     <string name="text_seconds">сек.</string>
     <string name="text_never">никогда</string>
+    <string name="text_continuously">Бесконечно</string>
+    <string name="text_custom">Пользовательский</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+    <string name="error_media_type">Неверный тип медиа-ресурса</string>
 
     // Select MODE dialog
     <string name="select_mode_title">Выберите режим</string>
@@ -19,6 +24,7 @@
     <string name="preference_modes">Режимы</string>
     <string name="preference_tools">Инструменты</string>
     <string name="preference_widget">Виджет</string>
+
     // Tools
     <string name="tools_notification_caption">Значок уведомлений</string>
     <string name="tools_notification_title">Значок в области уведомлений</string>
@@ -31,6 +37,7 @@
     <string name="tools_default_caption">Режимы по умолчанию</string>
     <string name="tools_default_title">Восстановление режимов</string>
     <string name="tools_default_desc">Восстановить режимы по умолчанию</string>
+
     // Widget
     <string name="widget_notification_type_title">Тип уведомления</string>         // Тип уведомления
     <string name="widget_notification_type_desc_full">Полный</string>
@@ -87,6 +94,9 @@
     <string name="profile_sms_title">Изменять звук уведомлений</string>
     <string name="profile_sms_desc">Отметьте, чтобы профиль изменял стандартный звук уведомления</string>
     <string name="profile_sms_melody">Звук уведомления</string>
+    <string name="profile_alarm_title">Изменять звук будильника</string>
+    <string name="profile_alarm_desc">Отметьте, чтобы профиль изменял стандартный звук будильника</string>
+    <string name="profile_alarm_melody">Звук будильника</string>
 
     // ConnectionsTab
     <string name="profile_wifi_title">Управление Wi-Fi</string>
@@ -119,5 +129,31 @@
     <string name="profile_screen_lock_title">Управление экраном блокировки</string>
     <string name="profile_screen_lock_desc">Отметьте, чтобы профиль управлял настройками экрана блокировки</string>
     <string name="profile_screen_lock">Экран блокировки</string>
+
+    // Диалог ProfileSetName
+    <string name="dialog_profile_set_name_title">Название профиля</string>
+    <string name="dialog_profile_set_name_not_empty">Название профиля не должно быть пустым</string>
+
+    // Диалог ProfileSetColor
+    <string name="dialog_profile_set_color_title">Выберите цвет</string>
+
+    // Диалог ProfileSetVolume
+    <string name="dialog_profile_set_volume_title">Настройка громкости</string>
+    <string name="dialog_profile_common_volume_title">Громкость мелодии звонка</string>
+    <string name="dialog_profile_common_volume">Общая громкость</string>
+    <string name="dialog_profile_notification_volume_title">Громкость уведомлений</string>
+    <string name="dialog_profile_media_volume_title">Громкость мультимедиа</string>
+    <string name="dialog_profile_alarm_volume_title">Громкость будильника</string>
+
+    // Диалог ProfileSetRingtone
+    <string name="dialog_profile_set_ringtone_title">Выбор мелодии</string>
+    <string name="dialog_profile_set_ringtone_silent">Без звука</string>
+
+    // Диалог ProfileSetScreenTimeout
+    <string name="dialog_profile_set_screen_timeout_title">Тайм-аут экрана</string>
+
+    // Диалог ProfileSetScreenBrightness
+    <string name="dialog_profile_set_screen_brightness_title">Яркость экрана</string>
+    <string name="dialog_profile_set_screen_brightness_auto">Автоматическая яркость</string>
 
 </resources>

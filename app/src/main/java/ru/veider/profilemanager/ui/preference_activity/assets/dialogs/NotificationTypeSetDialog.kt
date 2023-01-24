@@ -8,8 +8,7 @@ import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.Dia
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogSelector
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.WidgetNotificationType
-import ru.veider.profilemanager.ui.preference_activity.assets.enum.desc
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetNotificationType
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 

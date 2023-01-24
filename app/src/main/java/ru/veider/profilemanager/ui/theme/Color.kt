@@ -18,6 +18,7 @@ val colorOnSecondary @Composable get()= colorResource(id = R.color.color_on_seco
 val colorOnSecondaryContainer @Composable get()= colorResource(id = R.color.color_on_secondary_container)
 val colorError @Composable get()= colorResource(id = R.color.color_error)
 val colorInactive @Composable get()= colorResource(id = R.color.color_inactive)
+val colorGray @Composable get()= colorResource(id = R.color.color_gray)
 
 val colorDay @Composable get()= colorResource(id = R.color.widget_background_light_tint)
 val colorNight @Composable get()= colorResource(id = R.color.widget_background_dark_tint)

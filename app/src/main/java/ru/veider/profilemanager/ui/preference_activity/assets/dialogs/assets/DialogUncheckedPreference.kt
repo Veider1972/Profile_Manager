@@ -1,8 +1,6 @@
 package ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -10,14 +8,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbolColor
 import ru.veider.profilemanager.ui.preference_activity.assets.toDp
 import ru.veider.profilemanager.ui.theme.colorInactive
+import ru.veider.profilemanager.ui.theme.preferenceColor
 import ru.veider.profilemanager.ui.theme.preferenceDesc
 import ru.veider.profilemanager.ui.theme.preferenceTitle
 
@@ -47,7 +46,7 @@ fun DialogUncheckedPreference(title: String, desc: String, onClick: () -> Unit) 
 }
 
 @Composable
-fun DialogUncheckedPreference(title: String, desc: String, color: Color, onClick: () -> Unit) {
+fun DialogUncheckedPreference(title: String, desc: String, color: WidgetSymbolColor, onClick: () -> Unit) {
 
     val height = rememberSaveable { mutableStateOf(0) }
 
@@ -61,19 +60,22 @@ fun DialogUncheckedPreference(title: String, desc: String, color: Color, onClick
                                              end = dimensionResource(id = R.dimen.single_padding)
                  )
             )
-            Row() {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(text = "$desc ", style = preferenceDesc,
                      modifier = Modifier
-                         .padding(start = dimensionResource(id = R.dimen.double_padding),
-                                  end = dimensionResource(id = R.dimen.single_padding)
+                         .padding(start = dimensionResource(id = R.dimen.double_padding)
                          )
                          .onGloballyPositioned { position -> height.value = position.size.height }
                 )
-                Box(modifier = Modifier
-                    .height(height.value.toDp)
-                    .aspectRatio(2f)
-                    .background(color)
+                Text(text = color.desc,
+                     color = color.color,
+                     style = preferenceColor
                 )
+//                Box(modifier = Modifier
+//                    .height(height.value.toDp)
+//                    .aspectRatio(1f)
+//                    .background(color)
+//                )
             }
 
         }

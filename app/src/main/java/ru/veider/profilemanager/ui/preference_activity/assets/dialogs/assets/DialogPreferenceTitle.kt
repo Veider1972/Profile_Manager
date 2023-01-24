@@ -5,8 +5,14 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
 import ru.veider.profilemanager.ui.theme.dialogTitle
+
+@Composable
+fun DialogPreferenceTitle(text: Int){
+    DialogPreferenceTitle(stringResource(id = text))
+}
 
 @Composable
 fun DialogPreferenceTitle(text: String) {
