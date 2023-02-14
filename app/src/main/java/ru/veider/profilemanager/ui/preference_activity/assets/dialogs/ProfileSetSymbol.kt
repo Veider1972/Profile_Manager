@@ -20,6 +20,7 @@ import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.Dia
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
 import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbol
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 @Composable
@@ -62,7 +63,7 @@ fun ProfileSetSymbol(onDismiss: () -> Unit,
 @Composable
 fun Symbol(rowScope: RowScope, selectedSymbol: WidgetSymbol, symbol: WidgetSymbol, onClick: () -> Unit) {
     rowScope.run {
-        Icon(painter = painterResource(id = symbol.imageId),
+        Icon(painter = painterResource(id = symbol.imageId(WidgetColor.BLUE)),
              contentDescription = "",
              modifier = Modifier
                  .weight(1f, true)

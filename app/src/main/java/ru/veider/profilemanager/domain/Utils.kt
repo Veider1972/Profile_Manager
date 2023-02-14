@@ -11,8 +11,8 @@ fun ProfileData.toProfileSettingsState() =
         ProfileState(
             id = id,
             name = name,
-            symbolColor = symbolColor.asWidgetSymbolColor,
-            ringColor = ringColor.asWidgetSymbolColor,
+            symbolColor = symbolColor.asWidgetColor,
+            ringColor = ringColor.asWidgetColor,
             symbol = symbol.asWidgetSymbol,
             guideVibration = guideVibration,
             vibrationOn = vibrationOn,
@@ -92,7 +92,7 @@ fun ProfileState.toProfileData() =
 fun WidgetData.toWidgetState() =
         WidgetState(
             notificationType = this.notificationType.asWidgetNotificationType,
-            backgroundColor = this.backgroundColor.asWidgetBackgroundColor,
+            backgroundColor = this.backgroundColor.asWidgetBackground,
             backgroundTransparency = WidgetBackgroundTransparency(this.backgroundTransparency)
         )
 

@@ -13,7 +13,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbolColor
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
 import ru.veider.profilemanager.ui.preference_activity.assets.toDp
 import ru.veider.profilemanager.ui.theme.colorInactive
 import ru.veider.profilemanager.ui.theme.preferenceColor
@@ -46,7 +46,7 @@ fun DialogUncheckedPreference(title: String, desc: String, onClick: () -> Unit) 
 }
 
 @Composable
-fun DialogUncheckedPreference(title: String, desc: String, color: WidgetSymbolColor, onClick: () -> Unit) {
+fun DialogUncheckedPreference(title: String, desc: String, color: WidgetColor, onClick: () -> Unit) {
 
     val height = rememberSaveable { mutableStateOf(0) }
 

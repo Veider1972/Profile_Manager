@@ -10,17 +10,17 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/widget_background_light"/>
+        android:src="@drawable/widget_background_white"/>
     <ImageView
-        android:id="@+id/tint"
+        android:id="@+id/ring"
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/widget_background_dark_tint"/>
+        android:src="@drawable/widget_ring_orange"/>
     <ImageView
-        android:id="@+id/mode_image"
+        android:id="@+id/symbol"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/widget_symbol_night"/>
+        android:src="@drawable/widget_symbol_day_orange"/>
 </RelativeLayout>

@@ -17,8 +17,9 @@ import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 @Composable
 fun ModesTab(navController: NavController) {
 
-    val viewModel:PreferenceViewModel = koinViewModel()
+    val viewModel: PreferenceViewModel = koinViewModel()
     val profiles by viewModel.profilesState.collectAsState()
+    val widget by viewModel.widgetState.collectAsState()
 
 
     Column(modifier = Modifier
@@ -28,16 +29,19 @@ fun ModesTab(navController: NavController) {
         .fillMaxSize()
     ) {
         profiles.data.forEach {
-            PreferenceModeRow(icon = it.symbol.imageId,
+            PreferenceModeRow(widgetBackground = widget.backgroundColor,
+                              ringColor = it.ringColor,
+                              symbol = it.symbol,
+                              symbolColor = it.symbolColor,
                               text = it.name,
-                              color = it.symbolColor.color,
-                              runMode = { /*TODO*/ },
+                              textColor = it.symbolColor.color,
+                              runMode = { viewModel.setCurrentProfile(it) },
                               timeMode = { /*TODO*/ },
                               editMode = {
                                   Log.d("TAG", it.id.toString())
                                   viewModel.setProfileState(it.id)
-                    navController.navigate(NavDestination.ModeEditorScreen.destination)
-                })
+                                  navController.navigate(NavDestination.ModeEditorScreen.destination)
+                              })
         }
     }
 }

@@ -1,6 +1,13 @@
 package ru.veider.profilemanager.ui.widget.assets
 
-enum class WidgetMode{
+enum class WidgetMode {
     NIGHT, DAY
 }
-const val WIDGET_MODE = "WIDGET_MODE"
+
+const val PROFILE_MANAGER = "PROFILE_MANAGER"
+const val WIDGET_BACKGROUND = "WIDGET_BACKGROUND"
+const val WIDGET_TRANSPARENCY = "WIDGET_TRANSPARENCY"
+const val WIDGET_RING_COLOR = "WIDGET_RING_COLOR"
+const val WIDGET_SYMBOL = "WIDGET_SYMBOL"
+const val WIDGET_SYMBOL_COLOR = "WIDGET_SYMBOL_COLOR"
+const val WIDGET_NAME = "WIDGET_NAME"

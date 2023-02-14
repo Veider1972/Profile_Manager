@@ -8,7 +8,7 @@ interface LocalRepo {
     suspend fun getCurrentProfile(): Resource<Long>
     suspend fun putCurrentProfile(currentProfileId: Long)
     suspend fun getWidgetSettings(): Resource<WidgetData>
-    suspend fun putWidgetSettings(currentProfile: WidgetData)
+    suspend fun putWidgetSettings(widgetSettings: WidgetData)
     suspend fun updateWidgetNotificationType(notificationType: Int)
     suspend fun updateWidgetBackgroundColor(backgroundColor: Int)
     suspend fun updateWidgetBackgroundTransparency(backgroundTransparency: Int)

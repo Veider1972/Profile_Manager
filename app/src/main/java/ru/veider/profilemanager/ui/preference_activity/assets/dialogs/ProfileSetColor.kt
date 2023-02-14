@@ -17,23 +17,23 @@ import ru.veider.profilemanager.R
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogAcceptCancelButtons
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbolColor
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 @Composable
-fun ProfileSetColor(onDismiss: () -> Unit,
-                    onAccept: (WidgetSymbolColor) -> Unit,
+fun ProfileSetColor(color: WidgetColor,
+                    onDismiss: () -> Unit,
+                    onAccept: (WidgetColor) -> Unit,
                     onCancel: () -> Unit) {
 
     val viewModel: PreferenceViewModel = koinViewModel()
-    val state by viewModel.profileState.collectAsState()
 
-    val ringColor = remember {
-        mutableStateOf(state.ringColor)
+    val selectedColor = remember {
+        mutableStateOf(color)
     }
 
-    val colorList = arrayOf(arrayOf(WidgetSymbolColor.BLUE, WidgetSymbolColor.GREEN, WidgetSymbolColor.YELLOW),
-                            arrayOf(WidgetSymbolColor.ORANGE, WidgetSymbolColor.RED, WidgetSymbolColor.PURPLE)
+    val colorList = arrayOf(arrayOf(WidgetColor.BLUE, WidgetColor.GREEN, WidgetColor.YELLOW),
+                            arrayOf(WidgetColor.ORANGE, WidgetColor.RED, WidgetColor.PURPLE)
     )
 
     DialogWrapper(onDismiss = onDismiss) {
@@ -43,14 +43,14 @@ fun ProfileSetColor(onDismiss: () -> Unit,
                 Row(modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.single_padding))) {
                     for (column in colorList[row].indices)
                         CircleColor(rowScope = this,
-                                    selectedColor = ringColor.value,
+                                    selectedColor = selectedColor.value,
                                     circleColor = colorList[row][column],
                                     onClick = {
-                                        ringColor.value = colorList[row][column]
+                                        selectedColor.value = colorList[row][column]
                                     })
                 }
             DialogAcceptCancelButtons(accept = {
-                onAccept(ringColor.value)
+                onAccept(selectedColor.value)
             }, cancel = { onCancel() })
 
         }
@@ -58,7 +58,7 @@ fun ProfileSetColor(onDismiss: () -> Unit,
 }
 
 @Composable
-fun CircleColor(rowScope: RowScope, selectedColor: WidgetSymbolColor, circleColor: WidgetSymbolColor, onClick: () -> Unit) {
+fun CircleColor(rowScope: RowScope, selectedColor: WidgetColor, circleColor: WidgetColor, onClick: () -> Unit) {
     rowScope.run {
         Icon(painter = painterResource(id = R.drawable.symbol_circle),
              contentDescription = "",

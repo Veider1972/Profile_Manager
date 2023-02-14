@@ -5,13 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.LaunchedEffect
 import org.koin.androidx.compose.koinViewModel
 import ru.veider.profilemanager.ui.preference_activity.PreferenceActivity
 import ru.veider.profilemanager.ui.selected_activity.dialogs.SelectProfileDialog
 import ru.veider.profilemanager.ui.theme.ProfileManagerTheme
-import ru.veider.profilemanager.ui.widget.assets.WIDGET_MODE
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
-
 
 class SelectActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +22,10 @@ class SelectActivity : ComponentActivity() {
 
             ProfileManagerTheme {
                 SelectProfileDialog(onDismiss = {
-                    finish()
-                },
+                                        finish()
+                                    },
                                     onAccept = {
-                                        val updateIntent = Intent().apply {
-                                            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                                            putExtra(WIDGET_MODE, it.name)
-                                        }
-                                        sendBroadcast(updateIntent)
-//                                        viewModel.setProfile(it)
+                                        viewModel.setCurrentProfile(it)
                                         finish()
                                     },
                                     onStartPreferencesActivity = {

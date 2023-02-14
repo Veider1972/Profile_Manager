@@ -9,18 +9,18 @@ interface UseCases {
     suspend fun getCurrentProfile(): Resource<Long>
     suspend fun putCurrentProfile(currentProfileId:Long)
     suspend fun getWidgetSettings(): Resource<WidgetState>
-    suspend fun putWidgetSettings(currentProfile: WidgetState)
+    suspend fun putWidgetSettings(widgetSettings: WidgetState)
     suspend fun getProfiles(): Resource<List<ProfileState>>
     suspend fun putProfile(profile: ProfileState)
     suspend fun updateWidgetNotificationType(notificationType:WidgetNotificationType)
-    suspend fun updateWidgetBackgroundColor(backgroundColor:WidgetBackgroundColor)
+    suspend fun updateWidgetBackgroundColor(backgroundColor:WidgetBackground)
     suspend fun updateWidgetBackgroundTransparency(backgroundTransparency:WidgetBackgroundTransparency)
     suspend fun updateWidgetNotification(notification:Boolean)
     suspend fun deleteProfile(id: Long)
     suspend fun update(profile: ProfileState)
     suspend fun updateName(name: String, id: Long)
-    suspend fun updateSymbolColor(symbolColor: WidgetSymbolColor, id: Long)
-    suspend fun updateRingColor(ringColor: WidgetSymbolColor, id: Long)
+    suspend fun updateSymbolColor(symbolColor: WidgetColor, id: Long)
+    suspend fun updateRingColor(ringColor: WidgetColor, id: Long)
     suspend fun updateSymbol(symbol: WidgetSymbol, id: Long)
     suspend fun updateVibration(guideVibration: Boolean, vibrationOn: Boolean, id: Long)
     suspend fun updateVolume(guideVolume: Boolean, commonVolume: Int, useCommonVolume: Boolean, notificationVolume: Int, mediaVolume: Int, alarmVolume: Int, id: Long)

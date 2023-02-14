@@ -10,12 +10,12 @@ import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.Dia
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogSelector
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackgroundColor
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackground
 import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 @Composable
 fun BackgroundColorSetDialog(onDismiss: () -> Unit,
-                             onAccept: (WidgetBackgroundColor) -> Unit,
+                             onAccept: (WidgetBackground) -> Unit,
                              onCancel: () -> Unit) {
     val viewModel: PreferenceViewModel = koinViewModel()
     val state by viewModel.widgetState.collectAsState()
@@ -27,18 +27,18 @@ fun BackgroundColorSetDialog(onDismiss: () -> Unit,
     DialogWrapper(onDismiss = onDismiss) {
         Column() {
             DialogPreferenceTitle(text = stringResource(id = R.string.widget_background_color_title))
-            DialogSelector(text = WidgetBackgroundColor.WHITE.desc,
-                           checked = (backgroundColor.value == WidgetBackgroundColor.WHITE),
-                           onCheckedChange = { backgroundColor.value = WidgetBackgroundColor.WHITE })
-            DialogSelector(text = WidgetBackgroundColor.GREY.desc,
-                           checked = (backgroundColor.value == WidgetBackgroundColor.GREY),
-                           onCheckedChange = { backgroundColor.value = WidgetBackgroundColor.GREY })
-            DialogSelector(text = WidgetBackgroundColor.BLACK.desc,
-                           checked = (backgroundColor.value == WidgetBackgroundColor.BLACK),
-                           onCheckedChange = { backgroundColor.value = WidgetBackgroundColor.BLACK })
-            DialogSelector(text = WidgetBackgroundColor.NONE.desc,
-                           checked = (backgroundColor.value == WidgetBackgroundColor.NONE),
-                           onCheckedChange = { backgroundColor.value = WidgetBackgroundColor.NONE })
+            DialogSelector(text = WidgetBackground.WHITE.desc,
+                           checked = (backgroundColor.value == WidgetBackground.WHITE),
+                           onCheckedChange = { backgroundColor.value = WidgetBackground.WHITE })
+            DialogSelector(text = WidgetBackground.GRAY.desc,
+                           checked = (backgroundColor.value == WidgetBackground.GRAY),
+                           onCheckedChange = { backgroundColor.value = WidgetBackground.GRAY })
+            DialogSelector(text = WidgetBackground.BLACK.desc,
+                           checked = (backgroundColor.value == WidgetBackground.BLACK),
+                           onCheckedChange = { backgroundColor.value = WidgetBackground.BLACK })
+            DialogSelector(text = WidgetBackground.NONE.desc,
+                           checked = (backgroundColor.value == WidgetBackground.NONE),
+                           onCheckedChange = { backgroundColor.value = WidgetBackground.NONE })
             DialogAcceptCancelButtons(accept = {
                 onAccept(backgroundColor.value)
             }, cancel = { onCancel() })

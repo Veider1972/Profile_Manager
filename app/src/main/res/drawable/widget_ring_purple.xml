@@ -3,7 +3,7 @@
     android:shape="oval"
     >
     <stroke
-        android:color="@color/widget_background_dark_tint"
+        android:color="@color/widget_color_purple"
         android:width="2dp"/>
     <size android:width="36dp" android:height="36dp"/>
 

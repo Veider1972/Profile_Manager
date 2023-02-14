@@ -28,24 +28,26 @@ fun InfoTab(navController: NavController) {
     var showProfileSetNameDialog by rememberSaveable { mutableStateOf(false) }
     if (showProfileSetNameDialog)
         ProfileSetName(onDismiss = { showProfileSetNameDialog = false },
-                                  onAccept = {
-                                      viewModel.setProfileName(it)
-                                      showProfileSetNameDialog = false
-                                  },
-                                  onCancel = { showProfileSetNameDialog = false })
-
-    var showProfileSetMarkColorDialog by rememberSaveable { mutableStateOf(false) }
-    if (showProfileSetMarkColorDialog)
-        ProfileSetColor(onDismiss = { showProfileSetMarkColorDialog = false },
-                        onAccept = {
-                           viewModel.setProfileRingColor(it)
-                           showProfileSetMarkColorDialog = false
+                       onAccept = {
+                           viewModel.setProfileName(it)
+                           showProfileSetNameDialog = false
                        },
-                        onCancel = { showProfileSetMarkColorDialog = false })
+                       onCancel = { showProfileSetNameDialog = false })
+
+    var showProfileSetSymbolColorDialog by rememberSaveable { mutableStateOf(false) }
+    if (showProfileSetSymbolColorDialog)
+        ProfileSetColor(color = state.symbolColor,
+                        onDismiss = { showProfileSetSymbolColorDialog = false },
+                        onAccept = {
+                            viewModel.setProfileSymbolColor(it)
+                            showProfileSetSymbolColorDialog = false
+                        },
+                        onCancel = { showProfileSetSymbolColorDialog = false })
 
     var showProfileSetRingColorDialog by rememberSaveable { mutableStateOf(false) }
     if (showProfileSetRingColorDialog)
-        ProfileSetColor(onDismiss = { showProfileSetRingColorDialog = false },
+        ProfileSetColor(color = state.ringColor,
+                        onDismiss = { showProfileSetRingColorDialog = false },
                         onAccept = {
                             viewModel.setProfileRingColor(it)
                             showProfileSetRingColorDialog = false
@@ -55,13 +57,11 @@ fun InfoTab(navController: NavController) {
     var showProfileSetSymbolDialog by rememberSaveable { mutableStateOf(false) }
     if (showProfileSetSymbolDialog)
         ProfileSetSymbol(onDismiss = { showProfileSetSymbolDialog = false },
-                        onAccept = {
-                            viewModel.setProfileSymbol(it)
-                            showProfileSetSymbolDialog = false
-                        },
-                        onCancel = { showProfileSetSymbolDialog = false })
-
-
+                         onAccept = {
+                             viewModel.setProfileSymbol(it)
+                             showProfileSetSymbolDialog = false
+                         },
+                         onCancel = { showProfileSetSymbolDialog = false })
     Column(modifier = Modifier
         .fillMaxSize()
     ) {
@@ -72,26 +72,27 @@ fun InfoTab(navController: NavController) {
                                       showProfileSetNameDialog = true
                                   })
         DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
-        // Цвет значка виджета
-        DialogUncheckedPreference(title = stringResource(id = R.string.profile_widget_mark_color_title),
-                                  desc = stringResource(id = R.string.text_current),
-                                  color = state.ringColor,
-                                  onClick = {
-                                      showProfileSetMarkColorDialog = true
-                                  })
+
         DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
         // Цвет кольца виджета
         DialogUncheckedPreference(title = stringResource(id = R.string.profile_widget_ring_color_title),
                                   desc = stringResource(id = R.string.text_current),
-                                  color = state.symbolColor,
+                                  color = state.ringColor,
                                   onClick = {
                                       showProfileSetRingColorDialog = true
+                                  })
+        // Цвет значка виджета
+        DialogUncheckedPreference(title = stringResource(id = R.string.profile_widget_mark_color_title),
+                                  desc = stringResource(id = R.string.text_current),
+                                  color = state.symbolColor,
+                                  onClick = {
+                                      showProfileSetSymbolColorDialog = true
                                   })
         // Значок виджета
         DialogHorizontalThingDivider(padding = dimensionResource(id = R.dimen.single_padding))
         DialogUncheckedPreference(title = stringResource(id = R.string.profile_widget_symbol_title),
                                   desc = stringResource(id = R.string.text_current),
-                                  postImage = painterResource(id = state.symbol.imageId),
+                                  postImage = painterResource(id = state.symbol.imageId(state.symbolColor)),
                                   onClick = {
                                       showProfileSetSymbolDialog = true
                                   })

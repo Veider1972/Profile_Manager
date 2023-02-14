@@ -2,6 +2,7 @@ package ru.veider.profilemanager.repo.localrepo
 
 import ru.veider.profilemanager.repo.localrepo.entity.ProfileData
 import ru.veider.profilemanager.domain.Resource
+import ru.veider.profilemanager.repo.localrepo.entity.CurrentProfileData
 import ru.veider.profilemanager.repo.localrepo.entity.WidgetData
 
 class LocalRepoImpl(
@@ -16,7 +17,7 @@ class LocalRepoImpl(
             }
 
     override suspend fun putCurrentProfile(currentProfileId: Long) {
-        db.profileDao().putCurrentProfile(currentProfileId)
+        db.profileDao().putCurrentProfile(CurrentProfileData(0, currentProfileId))
     }
 
     override suspend fun getWidgetSettings(): Resource<WidgetData> =
@@ -26,8 +27,8 @@ class LocalRepoImpl(
                 Resource.Error(e)
             }
 
-    override suspend fun putWidgetSettings(currentProfile: WidgetData){
-        db.profileDao().putWidgetSettings(currentProfile)
+    override suspend fun putWidgetSettings(widgetSettings: WidgetData){
+        db.profileDao().putWidgetSettings(widgetSettings)
     }
 
     override suspend fun updateWidgetNotificationType(notificationType:Int){

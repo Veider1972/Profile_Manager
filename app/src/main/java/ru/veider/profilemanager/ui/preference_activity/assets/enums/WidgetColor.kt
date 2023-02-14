@@ -5,7 +5,7 @@ import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
 import ru.veider.profilemanager.ui.theme.*
 
-enum class WidgetSymbolColor {
+enum class WidgetColor {
     BLUE, GREEN, YELLOW, ORANGE, RED, PURPLE;
     val desc
         @Composable
@@ -30,17 +30,27 @@ enum class WidgetSymbolColor {
                 YELLOW -> colorYellow
                 GREEN  -> colorGreen
             }
+    val ringId
+        get() =
+            when (this) {
+                BLUE   -> R.drawable.widget_ring_blue
+                ORANGE -> R.drawable.widget_ring_orange
+                PURPLE -> R.drawable.widget_ring_purple
+                RED    -> R.drawable.widget_ring_red
+                YELLOW -> R.drawable.widget_ring_yellow
+                GREEN  -> R.drawable.widget_ring_green
+            }
 }
 
 
 
-val Int.asWidgetSymbolColor
+val Int.asWidgetColor
     get() =
         when (this) {
-            WidgetSymbolColor.BLUE.ordinal   -> WidgetSymbolColor.BLUE
-            WidgetSymbolColor.ORANGE.ordinal -> WidgetSymbolColor.ORANGE
-            WidgetSymbolColor.PURPLE.ordinal -> WidgetSymbolColor.PURPLE
-            WidgetSymbolColor.RED.ordinal    -> WidgetSymbolColor.RED
-            WidgetSymbolColor.YELLOW.ordinal -> WidgetSymbolColor.YELLOW
-            else                             -> WidgetSymbolColor.GREEN
+            WidgetColor.BLUE.ordinal   -> WidgetColor.BLUE
+            WidgetColor.ORANGE.ordinal -> WidgetColor.ORANGE
+            WidgetColor.PURPLE.ordinal -> WidgetColor.PURPLE
+            WidgetColor.RED.ordinal    -> WidgetColor.RED
+            WidgetColor.YELLOW.ordinal -> WidgetColor.YELLOW
+            else                       -> WidgetColor.GREEN
         }

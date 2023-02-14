@@ -34,8 +34,8 @@ class UseCasesImpl(
                 Resource.Error(e)
             }
 
-    override suspend fun putWidgetSettings(currentProfile: WidgetState) {
-        localRepo.putWidgetSettings(currentProfile.toWidgetData())
+    override suspend fun putWidgetSettings(widgetSettings: WidgetState) {
+        localRepo.putWidgetSettings(widgetSettings.toWidgetData())
     }
 
     override suspend fun getProfiles(): Resource<List<ProfileState>> =
@@ -58,7 +58,7 @@ class UseCasesImpl(
         localRepo.updateWidgetNotificationType(notificationType.ordinal)
     }
 
-    override suspend fun updateWidgetBackgroundColor(backgroundColor: WidgetBackgroundColor) {
+    override suspend fun updateWidgetBackgroundColor(backgroundColor: WidgetBackground) {
         localRepo.updateWidgetBackgroundColor(backgroundColor.ordinal)
     }
 
@@ -82,11 +82,11 @@ class UseCasesImpl(
         localRepo.updateName(name, id)
     }
 
-    override suspend fun updateSymbolColor(symbolColor: WidgetSymbolColor, id: Long) {
+    override suspend fun updateSymbolColor(symbolColor: WidgetColor, id: Long) {
         localRepo.updateSymbolColor(symbolColor.ordinal, id)
     }
 
-    override suspend fun updateRingColor(ringColor: WidgetSymbolColor, id: Long) {
+    override suspend fun updateRingColor(ringColor: WidgetColor, id: Long) {
         localRepo.updateRingColor(ringColor.ordinal, id)
     }
 

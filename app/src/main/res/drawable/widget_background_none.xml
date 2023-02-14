@@ -2,9 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval"
     >
-    <gradient
-        android:startColor="@color/widget_background_dark_color_start"
-        android:endColor="@color/widget_background_dark_color_end" android:angle="45"/>
+    <solid android:color="@color/widget_background_transparency_color"/>
     <size android:width="50dp" android:height="50dp"/>
 
 </shape>

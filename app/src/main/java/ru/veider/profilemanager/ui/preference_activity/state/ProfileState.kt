@@ -2,13 +2,13 @@ package ru.veider.profilemanager.ui.preference_activity.state
 
 import android.net.Uri
 import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbol
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbolColor
+import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
 
 data class ProfileState(
     val id: Long = 0,
     var name: String = "День",
-    var symbolColor: WidgetSymbolColor = WidgetSymbolColor.GREEN,
-    var ringColor: WidgetSymbolColor = WidgetSymbolColor.GREEN,
+    var symbolColor: WidgetColor = WidgetColor.GREEN,
+    var ringColor: WidgetColor = WidgetColor.GREEN,
     var symbol: WidgetSymbol = WidgetSymbol.DAY,
     var guideVibration: Boolean = false,
     var vibrationOn: Boolean = true,
