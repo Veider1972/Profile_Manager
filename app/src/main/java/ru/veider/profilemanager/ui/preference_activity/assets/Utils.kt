@@ -23,6 +23,9 @@ val Float.toDp: Dp
 fun Float.toDp(context: Context): Dp =
         (this * context.resources.displayMetrics.scaledDensity / context.resources.displayMetrics.density).dp
 
+val Boolean.toInt: Int
+    get() = if (this) 1 else 0
+
 fun getRingtoneTitle(context: Context, uri: Uri): String = RingtoneManager.getRingtone(context, uri).getTitle(context)
 
 fun getScreenTimeout(context: Context): String {

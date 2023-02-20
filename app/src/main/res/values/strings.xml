@@ -156,4 +156,15 @@
     <string name="dialog_profile_set_screen_brightness_title">Яркость экрана</string>
     <string name="dialog_profile_set_screen_brightness_auto">Автоматическая яркость</string>
 
+    // Permissions
+    <string name="permission_title">Для корректной работы программы необходимо дать соответствующие разрешения</string>
+    <string name="permission_WRITE_SETTINGS">Доступ на запись системных настроек</string>
+    <string name="permission_WRITE_SECURE_SETTINGS">Управление настройками безопасности</string>
+    <string name="permission_UPDATE_DEVICE_STATS">UPDATE_DEVICE_STATS</string>
+    <string name="permission_INTERNET">INTERNET</string>
+    <string name="permission_WAKE_LOCK">WAKE_LOCK</string>
+    <string name="permission_ACCESS_WIFI_STATE">Доступ к модулю WiFi</string>
+    <string name="permission_CHANGE_WIFI_STATE">Управление модулем WiFi</string>
+    <string name="permission_cancelled">Выйти из программы</string>
+
 </resources>

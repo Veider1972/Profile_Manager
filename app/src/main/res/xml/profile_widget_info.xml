@@ -4,6 +4,8 @@
     android:minWidth="30dp"
     android:resizeMode="none"
     android:minHeight="30dp"
+    android:maxResizeWidth="50dp"
+    android:maxResizeHeight="50dp"
     android:previewImage="@drawable/widget_symbol_day_blue"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"/>
