@@ -29,3 +29,11 @@ val colorYellow @Composable get()= colorResource(id = R.color.widget_color_yello
 val colorOrange @Composable get()= colorResource(id = R.color.widget_color_orange)
 val colorRed @Composable get()= colorResource(id = R.color.widget_color_red)
 val colorPurple @Composable get()= colorResource(id = R.color.widget_color_purple)
+
+val colorWhiteStart @Composable get()= colorResource(id = R.color.widget_gradient_white_start)
+val colorWhiteEnd @Composable get()= colorResource(id = R.color.widget_gradient_white_end)
+val colorGrayStart @Composable get()= colorResource(id = R.color.widget_gradient_gray_start)
+val colorGrayEnd @Composable get()= colorResource(id = R.color.widget_gradient_gray_end)
+val colorBlackStart @Composable get()= colorResource(id = R.color.widget_gradient_black_start)
+val colorBlackEnd @Composable get()= colorResource(id = R.color.widget_gradient_black_end)
+val colorTransparency @Composable get()= colorResource(id = R.color.widget_gradient_transparent)

@@ -1,4 +1,4 @@
-package ru.veider.profilemanager.ui.preference_activity.assets.enums
+package ru.veider.profilemanager.domain.preference
 
 import ru.veider.profilemanager.R
 

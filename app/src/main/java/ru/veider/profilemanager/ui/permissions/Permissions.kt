@@ -3,21 +3,35 @@ package ru.veider.profilemanager.ui.permissions
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.NotificationManager
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import com.google.accompanist.permissions.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import ru.veider.profilemanager.R
 import java.security.Permission
 
@@ -27,49 +41,116 @@ fun PermissionsRequest(
     activity: Activity,
     onGranted: @Composable () -> Unit
 ) {
-    val permissionsList = arrayListOf(Manifest.permission.CHANGE_WIFI_STATE,
-                                      Manifest.permission.ACCESS_WIFI_STATE/*,
+    val permissionsList = arrayListOf(
+        Manifest.permission.CHANGE_WIFI_STATE,
+        Manifest.permission.ACCESS_WIFI_STATE,
+        Manifest.permission.ACCESS_NETWORK_STATE,
+        Manifest.permission.CHANGE_NETWORK_STATE,
+
+        /*,
                                       Manifest.permission.WRITE_SECURE_SETTINGS,
                                       Manifest.permission.UPDATE_DEVICE_STATS,
                                       Manifest.permission.INTERNET,
                                       Manifest.permission.WAKE_LOCK*/
     )
-    val permissionsState = rememberMultiplePermissionsState(permissions = permissionsList)
+
     val context = LocalContext.current
 
+    val notificationManager =
+        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    val grantedCanWrite = rememberSaveable { mutableStateOf(Settings.System.canWrite(context)) }
+    val grantedNotificationPolicy =
+        rememberSaveable { mutableStateOf(notificationManager.isNotificationPolicyAccessGranted) }
+    LaunchedEffect(key1 = Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            permissionsList.add(Manifest.permission.BLUETOOTH_CONNECT)
+        CoroutineScope(Dispatchers.Default).launch {
+            while (!Settings.System.canWrite(context)) {
+                delay(100)
+            }
+            grantedCanWrite.value = true
+        }
+        CoroutineScope(Dispatchers.Default).launch {
+            while (!notificationManager.isNotificationPolicyAccessGranted) {
+                delay(100)
+            }
+            grantedNotificationPolicy.value = true
+        }
+    }
+
+    val permissionsState = rememberMultiplePermissionsState(permissions = permissionsList)
+
     when {
-        permissionsState.allPermissionsGranted && Settings.System.canWrite(context) -> {
+        permissionsState.allPermissionsGranted
+                && Settings.System.canWrite(context)
+                && notificationManager.isNotificationPolicyAccessGranted -> {
             onGranted()
         }
-        else                                                                        -> {
-            Column(modifier = Modifier
-                .padding(20.dp)
-                .fillMaxSize(1f),
-                   verticalArrangement = Arrangement.Center,
-                   horizontalAlignment = Alignment.CenterHorizontally
+        else -> {
+            Column(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .fillMaxSize(1f),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(LocalContext.current.resources.getString(R.string.permission_title), textAlign = TextAlign.Center)
+                Text(
+                    stringResource(R.string.permission_title),
+                    textAlign = TextAlign.Center
+                )
                 Spacer(modifier = Modifier.height(20.dp))
-                if (!Settings.System.canWrite(context)) {
+                if (!grantedCanWrite.value) {
                     Button(modifier = Modifier.fillMaxWidth(),
-                           onClick = {
-                               val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS).apply {
-                                   data = Uri.parse("package:${activity.packageName}")
+                        onClick = {
+                            val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS).apply {
+                                data = Uri.parse("package:${activity.packageName}")
 
-                               }
-                               context.startActivity(intent)
-                           }) {
-                        Text(text = LocalContext.current.resources.getString(R.string.permission_WRITE_SETTINGS))
+                            }
+                            context.startActivity(intent)
+                        }) {
+                        Text(text = stringResource(R.string.permission_WRITE_SETTINGS))
                     }
                 }
-                ShowPermissionButton(permissionsState = permissionsState, permissionsList = permissionsList,
-                                     permission = Manifest.permission.CHANGE_WIFI_STATE, buttonText = R.string.permission_CHANGE_WIFI_STATE
+
+                if (!grantedNotificationPolicy.value) {
+                    Button(modifier = Modifier.fillMaxWidth(),
+                        onClick = {
+                            val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                            context.startActivity(intent)
+                        }) {
+                        Text(text = stringResource(R.string.permission_ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
+                    }
+                }
+
+                ShowPermissionButton(
+                    permissionsState = permissionsState,
+                    permissionsList = permissionsList,
+                    permission = Manifest.permission.CHANGE_WIFI_STATE,
+                    buttonText = R.string.permission_CHANGE_WIFI_STATE
                 )
-                ShowPermissionButton(permissionsState = permissionsState, permissionsList = permissionsList,
-                                     permission = Manifest.permission.ACCESS_WIFI_STATE, buttonText = R.string.permission_ACCESS_WIFI_STATE
+                ShowPermissionButton(
+                    permissionsState = permissionsState,
+                    permissionsList = permissionsList,
+                    permission = Manifest.permission.ACCESS_WIFI_STATE,
+                    buttonText = R.string.permission_ACCESS_WIFI_STATE
                 )
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    ShowPermissionButton(
+                        permissionsState = permissionsState,
+                        permissionsList = permissionsList,
+                        permission = Manifest.permission.BLUETOOTH_CONNECT,
+                        buttonText = R.string.permission_BLUETOOTH_CONNECT
+                    )
+                }
+//                ShowPermissionButton(
+//                    permissionsState = permissionsState,
+//                    permissionsList = permissionsList,
+//                    permission = Manifest.permission.ACCESS_NETWORK_STATE,
+//                    buttonText = R.string.permission_ACCESS_WIFI_STATE
+//                )
 //                ShowPermissionButton(permissionsState = permissionsState, permissionsList = permissionsList,
-//                                     permission = Manifest.permission.WRITE_SECURE_SETTINGS, buttonText = R.string.permission_WRITE_SECURE_SETTINGS
+//                                     permission = Manifest.permission.WRITE_SETTINGS, buttonText = R.string.permission_WRITE_SETTINGS
 //                )
 //
 ////                if (!permissionsState.permissions[permissionsList.indexOf(Manifest.permission.WRITE_SECURE_SETTINGS)].status.isGranted) {
@@ -95,7 +176,9 @@ fun PermissionsRequest(
 //                                     permission = Manifest.permission.WAKE_LOCK, buttonText = R.string.permission_WAKE_LOCK
 //                )
                 Spacer(modifier = Modifier.height(50.dp))
-                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { (context as Activity).finish() }) {
+                TextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = { (context as Activity).finish() }) {
                     Text(LocalContext.current.resources.getString(R.string.permission_cancelled))
                 }
             }
@@ -105,13 +188,18 @@ fun PermissionsRequest(
 
 @ExperimentalPermissionsApi
 @Composable
-fun ShowPermissionButton(permissionsState: MultiplePermissionsState, permissionsList: List<String>, permission: String, buttonText: Int) {
+fun ShowPermissionButton(
+    permissionsState: MultiplePermissionsState,
+    permissionsList: List<String>,
+    permission: String,
+    buttonText: Int
+) {
     val permissionIndex = permissionsList.indexOf(permission)
     if (!permissionsState.permissions[permissionIndex].status.isGranted) {
         Button(modifier = Modifier.fillMaxWidth(),
-               onClick = {
-                   permissionsState.permissions[permissionIndex].launchPermissionRequest()
-               }) {
+            onClick = {
+                permissionsState.permissions[permissionIndex].launchPermissionRequest()
+            }) {
             Text(text = LocalContext.current.resources.getString(buttonText))
         }
     }

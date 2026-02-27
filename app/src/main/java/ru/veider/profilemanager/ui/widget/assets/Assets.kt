@@ -1,9 +1,5 @@
 package ru.veider.profilemanager.ui.widget.assets
 
-enum class WidgetMode {
-    NIGHT, DAY
-}
-
 const val PROFILE_MANAGER = "PROFILE_MANAGER"
 const val WIDGET_BACKGROUND = "WIDGET_BACKGROUND"
 const val WIDGET_TRANSPARENCY = "WIDGET_TRANSPARENCY"

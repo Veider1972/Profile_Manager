@@ -6,6 +6,7 @@
     <dimen name="spacer_width">1.dp</dimen>
     <dimen name="double_spacer_width">2.dp</dimen>
     <dimen name="tab_indicator_height">2.dp</dimen>
+    <dimen name="half_elevation">2.dp</dimen>
     <dimen name="single_elevation">5.dp</dimen>
     <dimen name="double_elevation">10.dp</dimen>
 </resources>

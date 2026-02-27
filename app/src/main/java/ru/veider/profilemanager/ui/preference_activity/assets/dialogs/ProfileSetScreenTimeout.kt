@@ -7,6 +7,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
@@ -22,7 +28,7 @@ import ru.veider.profilemanager.ui.preference_activity.assets.toDp
 import ru.veider.profilemanager.ui.theme.dialogTimeMinSec
 import ru.veider.profilemanager.ui.theme.dialogTimeSelector
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileSetScreenTimeout(currentTime: Pair<Int, Int>,
                             onDismiss: () -> Unit,
@@ -86,19 +92,19 @@ fun ProfileSetScreenTimeout(currentTime: Pair<Int, Int>,
             )
             ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 times.forEach { text ->
-                    DropdownMenuItem(onClick = {
-                        expanded = false
-                        when (text) {
-                            getComboBoxText(15)  -> selectTime(0, 15)
-                            getComboBoxText(30)  -> selectTime(0, 30)
-                            getComboBoxText(60)  -> selectTime(1, 0)
-                            getComboBoxText(120) -> selectTime(2, 0)
-                            getComboBoxText(300) -> selectTime(5, 0)
-                            getComboBoxText(0)   -> selectTime(0, 0)
-                        }
-                    }) {
-                        Text(text = text)
-                    }
+//                    DropdownMenuItem(onClick = {
+//                        expanded = false
+//                        when (text) {
+//                            getComboBoxText(15)  -> selectTime(0, 15)
+//                            getComboBoxText(30)  -> selectTime(0, 30)
+//                            getComboBoxText(60)  -> selectTime(1, 0)
+//                            getComboBoxText(120) -> selectTime(2, 0)
+//                            getComboBoxText(300) -> selectTime(5, 0)
+//                            getComboBoxText(0)   -> selectTime(0, 0)
+//                        }
+//                    }) {
+//                        Text(text = text)
+//                    }
                 }
             }
         }

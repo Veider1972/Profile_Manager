@@ -1,8 +1,8 @@
 package ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +23,6 @@ fun DialogHorizontalThingDivider(padding: Dp) {
 @Composable
 fun DialogHorizontalDivider(padding: Dp, thickness: Dp) {
     Divider(thickness = thickness, modifier = Modifier.padding(horizontal = padding),
-            color = MaterialTheme.colors.primary
+            color = MaterialTheme.colorScheme.primary
     )
 }

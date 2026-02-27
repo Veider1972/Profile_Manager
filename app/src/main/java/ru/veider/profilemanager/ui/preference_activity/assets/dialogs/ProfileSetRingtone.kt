@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.LocalMinimumTouchTargetEnforcement
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -23,12 +21,13 @@ import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.Dia
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogPreferenceTitle
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DialogWrapper
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ProfileSetRingtone(mediaType: Int,
-                       onDismiss: () -> Unit,
-                       onAccept: (Uri) -> Unit,
-                       onCancel: () -> Unit) {
+fun ProfileSetRingtone(
+    mediaType: Int,
+    onDismiss: () -> Unit,
+    onAccept: (Uri) -> Unit,
+    onCancel: () -> Unit
+) {
     val context = LocalContext.current
 
     val ringtoneList by lazy { getAndroidMedia(context, mediaType) }
@@ -42,43 +41,45 @@ fun ProfileSetRingtone(mediaType: Int,
         DialogPreferenceTitle(text = stringResource(id = R.string.dialog_profile_set_ringtone_title))
         LazyColumn(modifier = Modifier.aspectRatio(0.7f)) {
             item {
-                CompositionLocalProvider(LocalMinimumTouchTargetEnforcement.provides(false)) {
-                    Row(modifier = Modifier.padding(end = dimensionResource(id = R.dimen.single_padding),
-                                                    bottom = dimensionResource(id = R.dimen.single_padding)
-                    )
+                    Row(
+                        modifier = Modifier.padding(
+                            end = dimensionResource(id = R.dimen.single_padding),
+                            bottom = dimensionResource(id = R.dimen.single_padding)
+                        )
                     ) {
-                        DialogCheckedPreference(desc = stringResource(id = R.string.dialog_profile_set_ringtone_silent),
-                                                checked = (stringResource(id = R.string.dialog_profile_set_ringtone_silent) == checkedTitle.value),
-                                                onClick = {
-                                                    checkedTitle.value = context.getString(R.string.dialog_profile_set_ringtone_silent)
-                                                    checkedUri.value = Uri.EMPTY
-                                                    ringtone.value.stop()
-                                                })
-                    }
-
+                        DialogCheckedPreference(
+                            desc = stringResource(id = R.string.dialog_profile_set_ringtone_silent),
+                            checked = (stringResource(id = R.string.dialog_profile_set_ringtone_silent) == checkedTitle.value),
+                            onClick = {
+                                checkedTitle.value =
+                                    context.resources.getString(R.string.dialog_profile_set_ringtone_silent)
+                                checkedUri.value = Uri.EMPTY
+                                ringtone.value.stop()
+                            },
+                            enabled = true
+                        )
                 }
             }
             ringtoneList.forEach {
                 item {
-                    CompositionLocalProvider(LocalMinimumTouchTargetEnforcement.provides(false)) {
-                        Row(modifier = Modifier.padding(end = dimensionResource(id = R.dimen.single_padding),
-                                                        bottom = dimensionResource(id = R.dimen.single_padding)
-                        )
+                        Row(
+                            modifier = Modifier.padding(
+                                end = dimensionResource(id = R.dimen.single_padding),
+                                bottom = dimensionResource(id = R.dimen.single_padding)
+                            )
                         ) {
                             DialogCheckedPreference(desc = it.title,
-                                                    checked = (it.title == checkedTitle.value),
-                                                    onClick = {
-                                                        checkedTitle.value = it.title
-                                                        checkedUri.value = it.uri
+                                checked = (it.title == checkedTitle.value),
+                                onClick = {
+                                    checkedTitle.value = it.title
+                                    checkedUri.value = it.uri
 
-                                                        ringtone.value.stop()
-                                                        ringtone.value = getRingtone(context, it.uri)
-                                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
-                                                            ringtone.value.isLooping = false
-                                                        ringtone.value.play()
-                                                    })
-                        }
-
+                                    ringtone.value.stop()
+                                    ringtone.value = getRingtone(context, it.uri)
+                                    ringtone.value.isLooping = false
+                                    ringtone.value.play()
+                                }, enabled = true
+                            )
                     }
                 }
             }

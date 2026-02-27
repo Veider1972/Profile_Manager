@@ -5,7 +5,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import ru.veider.profilemanager.di.appModule
-import ru.veider.profilemanager.di.repoModule
+import ru.veider.profilemanager.di.gsonModule
 
 class MainApp:Application() {
     override fun onCreate() {
@@ -13,7 +13,7 @@ class MainApp:Application() {
         startKoin {
             androidLogger()
             androidContext(this@MainApp)
-            modules(repoModule, appModule)
+            modules(appModule, gsonModule)
         }
     }
 }

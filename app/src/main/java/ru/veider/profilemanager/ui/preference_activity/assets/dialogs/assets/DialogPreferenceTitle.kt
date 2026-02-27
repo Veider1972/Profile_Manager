@@ -2,6 +2,9 @@ package ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -23,6 +26,6 @@ fun DialogPreferenceTitle(text: String) {
     )
     Divider(thickness = dimensionResource(id = R.dimen.double_spacer_width),
             modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.single_padding)),
-            color = MaterialTheme.colors.primary
+            color = MaterialTheme.colorScheme.primary
     )
 }

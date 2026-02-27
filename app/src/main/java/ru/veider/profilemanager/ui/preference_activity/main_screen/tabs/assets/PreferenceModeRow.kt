@@ -1,21 +1,21 @@
 package ru.veider.profilemanager.ui.preference_activity.main_screen.tabs.assets
 
-import android.widget.ImageButton
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -25,9 +25,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.veider.profilemanager.R
 import ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets.DrawWidget
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetBackground
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetSymbol
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
+import ru.veider.profilemanager.domain.preference.WidgetBackground
+import ru.veider.profilemanager.domain.preference.WidgetSymbol
+import ru.veider.profilemanager.domain.preference.WidgetColor
 import ru.veider.profilemanager.ui.theme.colorInactive
 import ru.veider.profilemanager.ui.theme.selectDialogModeFont
 
@@ -47,7 +47,7 @@ fun PreferenceModeRow(widgetBackground: WidgetBackground, ringColor: WidgetColor
             .weight(1f, true)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                DrawWidget(widgetBackground = widgetBackground, ringColor = ringColor, symbol = symbol, symbolColor = symbolColor)
+                DrawWidget(size = 50.dp, widgetBackground = widgetBackground, ringColor = ringColor, symbol = symbol, symbolColor = symbolColor, onClick = {})
                 Text(
                     text = text,
                     style = selectDialogModeFont,
@@ -55,13 +55,13 @@ fun PreferenceModeRow(widgetBackground: WidgetBackground, ringColor: WidgetColor
                 )
             }
         }
-        Divider(color = MaterialTheme.colors.onPrimary,
+        Divider(color = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier
                     .height(30.dp)
                     .width(dimensionResource(id = R.dimen.spacer_width))
         )
         Chip(imageId = R.drawable.run_mode, color = textColor, onClick = runMode, modifier = Modifier.scale(0.8f))
-        Divider(color = MaterialTheme.colors.onPrimary,
+        Divider(color = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier
                     .height(30.dp)
                     .width(dimensionResource(id = R.dimen.spacer_width))
@@ -69,7 +69,7 @@ fun PreferenceModeRow(widgetBackground: WidgetBackground, ringColor: WidgetColor
 
 
         Chip(imageId = R.drawable.access_time, color = textColor, onClick = timeMode, modifier = Modifier.scale(0.8f))
-        Divider(color = MaterialTheme.colors.onPrimary,
+        Divider(color = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier
                     .height(30.dp)
                     .width(dimensionResource(id = R.dimen.spacer_width))
@@ -97,14 +97,14 @@ private fun Chip(
         }
     }) {
         Surface(
-            color = MaterialTheme.colors.surface,
-            contentColor = MaterialTheme.colors.surface,
+            color = MaterialTheme.colorScheme.surface,
+            contentColor = MaterialTheme.colorScheme.surface,
             shape = CircleShape,
         border = BorderStroke(
             width = 1.dp,
             color = colorInactive
         ),
-            elevation = if (pressed.value) dimensionResource(id = R.dimen.single_elevation) else dimensionResource(id = R.dimen.double_elevation),
+//            elevation = if (pressed.value) dimensionResource(id = R.dimen.single_elevation) else dimensionResource(id = R.dimen.double_elevation),
             modifier = modifier
         ) {
             Row(modifier = Modifier) {

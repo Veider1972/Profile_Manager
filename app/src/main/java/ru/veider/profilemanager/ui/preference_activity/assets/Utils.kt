@@ -1,14 +1,19 @@
 package ru.veider.profilemanager.ui.preference_activity.assets
 
 import android.content.Context
+import android.media.AudioManager
 import android.media.RingtoneManager
-import android.net.Uri
+import android.net.*
+import android.os.Build
 import android.provider.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ru.veider.profilemanager.R
+import ru.veider.profilemanager.ui.preference_activity.state.PhoneCapabilities
+
+const val TAG = "VVVVV"
 
 val Int.toDp: Dp
     @Composable
@@ -21,7 +26,7 @@ val Float.toDp: Dp
     get() = (this * LocalContext.current.resources.displayMetrics.scaledDensity / LocalContext.current.resources.displayMetrics.density).dp
 
 fun Float.toDp(context: Context): Dp =
-        (this * context.resources.displayMetrics.scaledDensity / context.resources.displayMetrics.density).dp
+    (this * context.resources.displayMetrics.scaledDensity / context.resources.displayMetrics.density).dp
 
 val Boolean.toInt: Int
     get() = if (this) 1 else 0
@@ -65,6 +70,36 @@ fun getPairTimeout(timeout: Int): Pair<Int, Int> {
     }
 }
 
-fun getScreenBrightness(context: Context): Int = Settings.System.getInt(context.contentResolver, Settings.System.SCREEN_BRIGHTNESS) * 100 / 255
+fun getScreenBrightness(context: Context): Int =
+    Settings.System.getInt(context.contentResolver, Settings.System.SCREEN_BRIGHTNESS) * 100 / 255
+
 fun getScreenBrightnessAuto(context: Context): Boolean =
-        Settings.System.getInt(context.contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+    Settings.System.getInt(
+        context.contentResolver,
+        Settings.System.SCREEN_BRIGHTNESS_MODE
+    ) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+
+fun setVolume(
+    context: Context, ringVolume: Int, notificationVolume: Int, mediaVolume: Int,
+    alarmVolume: Int
+) {
+    val capability = PhoneCapabilities(context)
+    val audioManager = context.applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+    audioManager.setStreamVolume(
+        AudioManager.STREAM_RING, (capability.normalRingVolume * ringVolume).toInt(), 0
+    )
+    audioManager.setStreamVolume(
+        AudioManager.STREAM_NOTIFICATION, (capability.normalNotificationVolume * notificationVolume).toInt(), 0
+    )
+    audioManager.setStreamVolume(
+        AudioManager.STREAM_MUSIC, (capability.normalMusicVolume * mediaVolume).toInt(), 0
+    )
+    audioManager.setStreamVolume(
+        AudioManager.STREAM_ALARM, (capability.normalAlarmVolume * alarmVolume).toInt(), 0
+    )
+}
+
+val ConnectivityManager.isMobileDataOn: Boolean
+    get() = this.getNetworkCapabilities(this.activeNetwork)
+        ?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+        ?: false

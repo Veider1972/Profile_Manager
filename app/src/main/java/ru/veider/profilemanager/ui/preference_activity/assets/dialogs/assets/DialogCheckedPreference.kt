@@ -5,6 +5,10 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,44 +23,27 @@ import ru.veider.profilemanager.ui.theme.*
 
 @Composable
 fun DialogCheckedPreference(title: Int, desc: Int, checked: Boolean, onClick: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
-        .clickable(onClick = onClick)
+    Row(
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable(onClick = onClick)
     ) {
-        Column(modifier = Modifier
-            .weight(1f, true)
+        Column(
+            modifier = Modifier
+                .weight(1f, true)
         ) {
-            Text(text = stringResource(id = title), style = preferenceTitle, maxLines = 1,
-                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding),
-                                             end = dimensionResource(id = R.dimen.single_padding)
-                 )
+            Text(
+                text = stringResource(id = title), style = preferenceTitle, maxLines = 1,
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.double_padding),
+                    end = dimensionResource(id = R.dimen.single_padding)
+                )
             )
-            Text(text = stringResource(id = desc), style = preferenceDesc,
-                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding),
-                                             end = dimensionResource(id = R.dimen.single_padding)
-                 )
-            )
-        }
-        Checkbox(checked = checked, onCheckedChange = { onClick() })
-    }
-}
-
-@Composable
-fun DialogCheckedPreference(desc: Int, checked: Boolean, onClick: () -> Unit) {
-    DialogCheckedPreference(desc = stringResource(id = desc), checked = checked, onClick = onClick)
-}
-
-@Composable
-fun DialogCheckedPreference(desc: String, checked: Boolean, onClick: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
-        .clickable(onClick = onClick)
-    ) {
-        Column(modifier = Modifier
-            .weight(1f, true)
-        ) {
-            Text(text = desc, style = preferenceTitle, maxLines = 1,
-                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding),
-                                             end = dimensionResource(id = R.dimen.single_padding)
-                 )
+            Text(
+                text = stringResource(id = desc), style = preferenceDesc,
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.double_padding),
+                    end = dimensionResource(id = R.dimen.single_padding)
+                )
             )
         }
         Checkbox(checked = checked, onCheckedChange = { onClick() })
@@ -64,47 +51,97 @@ fun DialogCheckedPreference(desc: String, checked: Boolean, onClick: () -> Unit)
 }
 
 @Composable
-fun DialogCheckedPreference(enabled: Boolean, image: Painter, desc: Int, checked: Boolean, onClick: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
-        .clickable(enabled = enabled, onClick = onClick)
-        .fillMaxWidth()
-        .padding(bottom = dimensionResource(id = R.dimen.half_padding))
+fun DialogCheckedPreference(desc: Int, checked: Boolean, onClick: () -> Unit, enabled: Boolean) {
+    DialogCheckedPreference(
+        desc = stringResource(id = desc),
+        checked = checked,
+        onClick = onClick,
+        enabled = enabled
+    )
+}
+
+@Composable
+fun DialogCheckedPreference(desc: String, checked: Boolean, onClick: () -> Unit, enabled: Boolean) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable(onClick = onClick)
     ) {
-        Icon(painter = image,
-             contentDescription = "",
-             modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding)),
-             tint = getIconColor(enabled)
-        )
-        Text(text = stringResource(id = desc), style = preferenceTitle,
-             modifier = Modifier
-                 .padding(start = dimensionResource(id = R.dimen.single_padding),
-                          end = dimensionResource(id = R.dimen.single_padding)
-                 )
-                 .weight(1f, true),
-             color = getFontColor(enabled)
-        )
-        Box(modifier = Modifier
-            .padding(end = dimensionResource(id = R.dimen.single_padding))
+        Column(
+            modifier = Modifier
+                .weight(1f, true)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(dimensionResource(id = R.dimen.half_padding))) {
+            Text(
+                text = desc, style = preferenceTitle, maxLines = 1,
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.double_padding),
+                    end = dimensionResource(id = R.dimen.single_padding)
+                )
+            )
+        }
+        Checkbox(checked = checked, onCheckedChange = { onClick() }, enabled = enabled)
+    }
+}
+
+@Composable
+fun DialogCheckedPreference(
+    enabled: Boolean,
+    image: Painter,
+    desc: Int,
+    checked: Boolean,
+    onClick: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable(enabled = enabled, onClick = onClick)
+            .fillMaxWidth()
+            .padding(bottom = dimensionResource(id = R.dimen.half_padding))
+    ) {
+        Icon(
+            painter = image,
+            contentDescription = "",
+            modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding)),
+            tint = getIconColor(enabled)
+        )
+        Text(
+            text = stringResource(id = desc), style = preferenceTitle,
+            modifier = Modifier
+                .padding(
+                    start = dimensionResource(id = R.dimen.single_padding),
+                    end = dimensionResource(id = R.dimen.single_padding)
+                )
+                .weight(1f, true),
+            color = getFontColor(enabled)
+        )
+        Box(
+            modifier = Modifier
+                .padding(end = dimensionResource(id = R.dimen.single_padding))
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.half_padding))
+            ) {
                 if (checked) {
-                    Text("       ", modifier = Modifier
-                        .border(1.dp, getColor(enabled, true), RectangleShape)
+                    Text(
+                        "       ", modifier = Modifier
+                            .border(1.dp, getColor(enabled, true), RectangleShape)
                     )
-                    Text(text = " ${stringResource(id = R.string.text_yes)} ", modifier = Modifier
-                        .border(1.dp, getColor(enabled, true), RectangleShape)
-                        .background(getColor(enabled, true)),
-                         color = getFontColor(enabled)
+                    Text(
+                        text = " ${stringResource(id = R.string.text_yes)} ", modifier = Modifier
+                            .border(1.dp, getColor(enabled, true), RectangleShape)
+                            .background(getColor(enabled, true)),
+                        color = getFontColor(enabled)
                     )
                 } else {
-                    Text(text = " ${stringResource(id = R.string.text_no)} ", modifier = Modifier
-                        .border(1.dp, getColor(enabled, false), RectangleShape)
-                        .background(getColor(enabled, false)),
-                         color = getFontColor(enabled)
+                    Text(
+                        text = " ${stringResource(id = R.string.text_no)} ", modifier = Modifier
+                            .border(1.dp, getColor(enabled, false), RectangleShape)
+                            .background(getColor(enabled, false)),
+                        color = getFontColor(enabled)
                     )
-                    Text("      ",
-                         modifier = Modifier
-                             .border(1.dp, getColor(enabled, false), RectangleShape)
+                    Text(
+                        "      ",
+                        modifier = Modifier
+                            .border(1.dp, getColor(enabled, false), RectangleShape)
                     )
                 }
 
@@ -121,24 +158,24 @@ fun DialogCheckedPreference(enabled: Boolean, image: Painter, desc: Int, checked
 
 @Composable
 fun getColor(enabled: Boolean, checked: Boolean): Color =
-        if (enabled) {
-            if (checked)
-                MaterialTheme.colors.secondary
-            else
-                colorGray
-        } else
-            colorInactive
+    if (enabled) {
+        if (checked)
+            MaterialTheme.colorScheme.secondary
+        else
+            colorGray
+    } else
+        colorInactive
 
 @Composable
 fun getFontColor(enabled: Boolean): Color =
-        if (enabled) {
-            MaterialTheme.colors.onSurface
-        } else
-            colorGray
+    if (enabled) {
+        MaterialTheme.colorScheme.onSurface
+    } else
+        colorGray
 
 @Composable
 fun getIconColor(enabled: Boolean): Color =
-        if (enabled) {
-            MaterialTheme.colors.onSurface
-        } else
-            colorInactive
+    if (enabled) {
+        MaterialTheme.colorScheme.onSurface
+    } else
+        colorInactive

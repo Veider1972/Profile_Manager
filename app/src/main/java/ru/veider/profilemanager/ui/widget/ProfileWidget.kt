@@ -1,18 +1,16 @@
 package ru.veider.profilemanager.ui.widget
 
 import android.app.PendingIntent
-import android.appwidget.AppWidgetManager
-import android.appwidget.AppWidgetProvider
-import android.content.ComponentName
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.appwidget.*
+import android.content.*
 import android.util.Log
 import android.widget.RemoteViews
+import org.koin.java.KoinJavaComponent.inject
 import ru.veider.profilemanager.R
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.*
+import ru.veider.profilemanager.repo.Preference
 import ru.veider.profilemanager.ui.selected_activity.SelectActivity
-import ru.veider.profilemanager.ui.widget.assets.*
+import ru.veider.profilemanager.utils.gradientCircleBitmap
 
 
 class ProfileWidget : AppWidgetProvider() {
@@ -21,38 +19,23 @@ class ProfileWidget : AppWidgetProvider() {
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        var background: WidgetBackground
-        var transparency: Int
-        var ringColor: WidgetColor
-        var symbol: WidgetSymbol
-        var symbolColor: WidgetColor
-        var name: String
-
-        val prefs = context.getSharedPreferences(PROFILE_MANAGER, MODE_PRIVATE)
-
-        if (prefs != null) {
-            prefs.run {
-                background = getInt(WIDGET_BACKGROUND, WidgetBackground.WHITE.ordinal).asWidgetBackground
-                transparency = getInt(WIDGET_TRANSPARENCY, 0)
-                ringColor = getInt(WIDGET_RING_COLOR, WidgetColor.ORANGE.ordinal).asWidgetColor
-                symbol = getInt(WIDGET_SYMBOL, WidgetSymbol.DAY.ordinal).asWidgetSymbol
-                symbolColor = getInt(WIDGET_SYMBOL_COLOR, WidgetColor.ORANGE.ordinal).asWidgetColor
-                name = getString(WIDGET_NAME, "День").toString()
-            }
-        } else {
-            background = WidgetBackground.WHITE
-            transparency = 0
-            ringColor = WidgetColor.ORANGE
-            symbol = WidgetSymbol.DAY
-            symbolColor = WidgetColor.ORANGE
-            name = context.getString(R.string.mode_day_title)
-        }
+        val prefs: Preference by inject(Preference::class.java)
+        val background = prefs.widget.value.backgroundColor
+        val transparency = prefs.widget.value.backgroundTransparency.value
+        val profile = prefs.profiles.value.first { it.id ==  prefs.currentProfile.value}
+        val ringColor = profile.ringColor
+        val symbol = profile.symbol
+        val symbolColor = profile.symbolColor
+        val name = profile.name
 
         RemoteViews(context.packageName, R.layout.profile_widget).apply {
             val pendingIntent = getPendingIntent(context)
             setOnClickPendingIntent(R.id.background, pendingIntent)
             for (appWidgetId in appWidgetIds) {
-                setImageViewResource(R.id.background, background.resId)
+                val bitmap = gradientCircleBitmap(100, background.gradient(context).first(), background.gradient(context).last())
+                setImageViewBitmap(R.id.background, bitmap)
+//                setImageViewResource(R.id.background, background.resId)
+                setInt(R.id.background,"setAlpha", (transparency*2.55).toInt())
                 setImageViewResource(R.id.ring, ringColor.ringId)
                 setImageViewResource(R.id.symbol, symbol.imageId(symbolColor))
                 appWidgetManager.updateAppWidget(appWidgetId, this)
@@ -70,6 +53,6 @@ class ProfileWidget : AppWidgetProvider() {
 
     private fun getPendingIntent(context: Context): PendingIntent {
         val intent = Intent(context, SelectActivity::class.java)
-        return PendingIntent.getActivity(context, 0, intent, 0)
+        return PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE)
     }
 }

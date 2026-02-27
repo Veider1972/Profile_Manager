@@ -1,14 +1,16 @@
 package ru.veider.profilemanager.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 
 private val DarkColorPalette
     @Composable
     get() =
-        darkColors(
+        darkColorScheme(
             primary = colorPrimary,
             secondary = colorPrimaryDark,
             background = colorOnSurface,
@@ -22,7 +24,7 @@ private val DarkColorPalette
 private val LightColorPalette
     @Composable
     get() =
-        darkColors(
+        lightColorScheme(
             primary = colorPrimary,
             secondary = colorPrimaryDark,
             background = colorOnSurface,
@@ -42,7 +44,7 @@ fun ProfileManagerTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Co
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         typography = Typography,
         shapes = Shapes,
         content = content

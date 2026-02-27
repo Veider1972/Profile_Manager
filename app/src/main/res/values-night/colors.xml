@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Виджет фон
+    <color name="widget_gradient_black_start">#BFBFBF</color>
+    <color name="widget_gradient_black_end">#FFFFFF</color>
+    <color name="widget_gradient_white_start">#000000</color>
+    <color name="widget_gradient_white_end">#404040</color>
+    <color name="widget_gradient_gray_start">#6C6C6C</color>
+    <color name="widget_gradient_gray_end">#929292</color>
+    <color name="widget_gradient_transparent">#00000000</color>
+</resources>

@@ -2,7 +2,9 @@ package ru.veider.profilemanager.ui.preference_activity.assets.dialogs.assets
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -13,7 +15,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
-import ru.veider.profilemanager.ui.preference_activity.assets.enums.WidgetColor
+import ru.veider.profilemanager.domain.preference.WidgetColor
 import ru.veider.profilemanager.ui.preference_activity.assets.toDp
 import ru.veider.profilemanager.ui.theme.colorInactive
 import ru.veider.profilemanager.ui.theme.preferenceColor
@@ -122,7 +124,7 @@ fun DialogUncheckedHorizontalPreference(enabled: Boolean, preImage: Painter, tit
         Icon(painter = preImage,
              contentDescription = "",
              modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding)),
-             tint = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+             tint = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
         )
         Text(text = title, style = preferenceTitle,
              modifier = Modifier
@@ -130,7 +132,7 @@ fun DialogUncheckedHorizontalPreference(enabled: Boolean, preImage: Painter, tit
                           end = dimensionResource(id = R.dimen.single_padding)
                  )
                  .weight(1f, true),
-             color = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+             color = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
         )
         if (desc.isNotEmpty())
             Text(text = desc, style = preferenceDesc,
@@ -138,7 +140,7 @@ fun DialogUncheckedHorizontalPreference(enabled: Boolean, preImage: Painter, tit
                      .padding(start = dimensionResource(id = R.dimen.single_padding),
                               end = dimensionResource(id = R.dimen.single_padding)
                      ),
-                 color = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+                 color = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
             )
     }
 }
@@ -153,7 +155,7 @@ fun DialogUncheckedVerticalPreference(enabled: Boolean, preImage: Painter, title
         Icon(painter = preImage,
              contentDescription = "",
              modifier = Modifier.padding(start = dimensionResource(id = R.dimen.double_padding)),
-             tint = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+             tint = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
         )
         Column(verticalArrangement = Arrangement.Center, modifier = Modifier.weight(1f, true)) {
             Text(text = title, style = preferenceTitle,
@@ -161,7 +163,7 @@ fun DialogUncheckedVerticalPreference(enabled: Boolean, preImage: Painter, title
                      .padding(start = dimensionResource(id = R.dimen.single_padding),
                               end = dimensionResource(id = R.dimen.single_padding)
                      ),
-                 color = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+                 color = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
             )
             if (desc.isNotEmpty())
                 Text(text = desc, style = preferenceDesc,
@@ -169,7 +171,7 @@ fun DialogUncheckedVerticalPreference(enabled: Boolean, preImage: Painter, title
                          .padding(start = dimensionResource(id = R.dimen.single_padding),
                                   end = dimensionResource(id = R.dimen.single_padding)
                          ),
-                     color = if (enabled) MaterialTheme.colors.onSurface else colorInactive
+                     color = if (enabled) MaterialTheme.colorScheme.onSurface else colorInactive
                 )
         }
     }

@@ -5,10 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import org.koin.androidx.compose.koinViewModel
 import ru.veider.profilemanager.ui.navigation.NavController
 import ru.veider.profilemanager.ui.permissions.PermissionsRequest
-import ru.veider.profilemanager.viewmodel.PreferenceViewModel
 
 class PreferenceActivity : ComponentActivity() {
 

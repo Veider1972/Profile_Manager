@@ -1,6 +1,8 @@
-package ru.veider.profilemanager.ui.preference_activity.assets.enums
+package ru.veider.profilemanager.domain.preference
 
+import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import ru.veider.profilemanager.R
 
@@ -16,13 +18,12 @@ enum class WidgetBackground {
                 BLACK -> stringResource(id = R.string.widget_background_color_black)
                 NONE  -> stringResource(id = R.string.widget_background_color_none)
             }
-    val resId
-        get() =
+    fun gradient(context: Context) =
             when (this) {
-                WHITE -> R.drawable.widget_background_white
-                GRAY  -> R.drawable.widget_background_gray
-                BLACK -> R.drawable.widget_background_black
-                NONE  -> R.drawable.widget_background_none
+                WHITE -> listOf(Color(context.getColor(R.color.widget_gradient_white_start)), Color(context.getColor(R.color.widget_gradient_white_end)))
+                GRAY  -> listOf(Color(context.getColor(R.color.widget_gradient_gray_start)), Color(context.getColor(R.color.widget_gradient_gray_end)))
+                BLACK -> listOf(Color(context.getColor(R.color.widget_gradient_black_start)), Color(context.getColor(R.color.widget_gradient_black_end)))
+                NONE  -> listOf(Color(context.getColor(R.color.widget_gradient_transparent)), Color(context.getColor(R.color.widget_gradient_transparent)))
             }
 }
 

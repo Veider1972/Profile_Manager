@@ -49,9 +49,9 @@
     <string name="widget_background_color_black">Чёрный</string>
     <string name="widget_background_color_none">Без цвета</string>
     <string name="widget_transparency_title">Прозрачность фона</string>                 // Прозрачность
-    <string name="widget_transparency_none">Полная непрозрачность</string>
-    <string name="widget_transparency_middle">Прозрачность</string>
     <string name="widget_transparency_full">Полная прозрачность</string>
+    <string name="widget_transparency_middle">Прозрачность</string>
+    <string name="widget_transparency_none">Полная непрозрачность</string>
 
     // Mode Editor
     <string name="mode_editor_info_tab_name">Информация</string>
@@ -76,10 +76,7 @@
     <string name="profile_widget_symbol_title">Значок виджета</string>
 
     // SoundsTab
-    <string name="profile_vibration_title">Управление вибрацией</string>
-    <string name="profile_vibration_desc">Отметьте, чтобы профиль управлял настройками вибрации</string>
-    <string name="profile_vibration">Вибрация</string>
-    <string name="profile_volume_title">Управление звуком</string>
+    <string name="profile_volume_title">Управление звуком и вибрацией</string>
     <string name="profile_volume_desc">Отметьте, чтобы профиль управлял уровнем громкости мелодии вызова</string>
     <string name="profile_volume">Громкость</string>
     <string name="profile_volume_common_desc">(Общий)</string>
@@ -139,6 +136,10 @@
 
     // Диалог ProfileSetVolume
     <string name="dialog_profile_set_volume_title">Настройка громкости</string>
+    <string name="dialog_profile_vibro">Вибрация</string>
+    <string name="dialog_profile_silence">Без звука</string>
+    <string name="dialog_profile_aloud">Звук</string>
+    <string name="dialog_profile_dont_disturb">Не беспокоить</string>
     <string name="dialog_profile_common_volume_title">Громкость мелодии звонка</string>
     <string name="dialog_profile_common_volume">Общая громкость</string>
     <string name="dialog_profile_notification_volume_title">Громкость уведомлений</string>
@@ -156,14 +157,19 @@
     <string name="dialog_profile_set_screen_brightness_title">Яркость экрана</string>
     <string name="dialog_profile_set_screen_brightness_auto">Автоматическая яркость</string>
 
+    // SetProfile
+    <string name="profile_set">Установлен профиль\"%s\"</string>
+
     // Permissions
     <string name="permission_title">Для корректной работы программы необходимо дать соответствующие разрешения</string>
     <string name="permission_WRITE_SETTINGS">Доступ на запись системных настроек</string>
+    <string name="permission_ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS">Управление режимом "не беспокоить"</string>
     <string name="permission_WRITE_SECURE_SETTINGS">Управление настройками безопасности</string>
     <string name="permission_UPDATE_DEVICE_STATS">UPDATE_DEVICE_STATS</string>
     <string name="permission_INTERNET">INTERNET</string>
     <string name="permission_WAKE_LOCK">WAKE_LOCK</string>
     <string name="permission_ACCESS_WIFI_STATE">Доступ к модулю WiFi</string>
+    <string name="permission_BLUETOOTH_CONNECT">Доступ к модулю Bluetooth</string>
     <string name="permission_CHANGE_WIFI_STATE">Управление модулем WiFi</string>
     <string name="permission_cancelled">Выйти из программы</string>
 
