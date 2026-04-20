@@ -4,24 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
-<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-<!--    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />-->
-<!--    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />-->
-<!--    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />-->
-<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-<!--    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
-<!--    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />-->
-<!--    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />-->
-    <uses-feature android:name="android.hardware.wifi"/>
 
     <application
         android:name=".MainApp"
@@ -34,22 +17,21 @@
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true">
         <activity
-            android:name=".ui.preference_activity.PreferenceActivity"
+            android:name=".EditActivity"
             android:exported="true"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.PreferencesManager">
-
-        </activity>
-        <activity
-            android:name=".ui.selected_activity.SelectActivity"
-            android:exported="true"
-            android:launchMode="singleInstance"
-            android:theme="@style/Theme.SelectManager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SelectActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.SelectManager">
         </activity>
 
 

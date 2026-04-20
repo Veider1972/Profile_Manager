@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_on_surface">#FF000000</color>
-    <color name="color_surface">#FFFFFFFF</color>
-    <color name="color_primary">#FF7CAA46</color>
-    <color name="color_primary_light">#FFA9D477</color>
-    <color name="color_primary_dark">#FF658047</color>
-    <color name="color_on_primary">#FF000000</color>
-    <color name="color_primary_container">#FFC3F0A0</color>
-    <color name="color_on_primary_container">#FF0B2004</color>
-    <color name="color_secondary">#FF4CAF50</color>
-    <color name="color_secondary_light">#FF80e27d</color>
-    <color name="color_secondary_dark">#FF087f22</color>
-    <color name="color_on_secondary">#FF000000</color>
-    <color name="color_secondary_container">#FFDBE5CC</color>
-    <color name="color_on_secondary_container">#FF151E0E</color>
+    <color name="color_on_surface">#000000</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_primary">#8BC34A</color>
+    <color name="color_primary_dark">#33691E</color>
+    <color name="color_on_primary">#FEFEFE</color>
+    <color name="color_primary_container">#C3F0A0</color>
+    <color name="color_on_primary_container">#0B2004</color>
+    <color name="color_secondary">#4CAF50</color>
+    <color name="color_on_secondary">#FEFEFE</color>
+    <color name="color_secondary_container">#DBE5CC</color>
+    <color name="color_on_secondary_container">#151E0E</color>
+    <color name="color_tertiary">#316668</color>
+    <color name="color_on_tertiary">#FEFEFE</color>
+    <color name="color_tertiary_container">#B6ECEE</color>
+    <color name="color_on_tertiary_container">#081E20</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_error">#FFFF0000</color>
@@ -21,13 +22,14 @@
     <color name="color_gray">#FF888888</color>
 
     // Виджет фон
-    <color name="widget_gradient_white_start">#BFBFBF</color>
-    <color name="widget_gradient_white_end">#FFFFFF</color>
-    <color name="widget_gradient_black_start">#000000</color>
-    <color name="widget_gradient_black_end">#404040</color>
-    <color name="widget_gradient_gray_start">#6C6C6C</color>
-    <color name="widget_gradient_gray_end">#929292</color>
-    <color name="widget_gradient_transparent">#00000000</color>
+    <color name="widget_default">#8BC34A</color>
+    <color name="white_start">#BFBFBF</color>
+    <color name="white_end">#FFFFFF</color>
+    <color name="black_start">#000000</color>
+    <color name="black_end">#404040</color>
+    <color name="gray_start">#6C6C6C</color>
+    <color name="gray_end">#929292</color>
+    <color name="color_transparent">#00000000</color>
 
     <color name="widget_background_light_tint">@color/color_primary</color>
 
@@ -36,7 +38,7 @@
     // Цвет символа виджета
     <color name="widget_color_blue">#0000C5</color>
     <color name="widget_color_green">#FF7CAA46</color>
-    <color name="widget_color_yellow">#E4E400</color>
+    <color name="widget_color_light_blue">#04AEFF</color>
     <color name="widget_color_orange">#FF7000</color>
     <color name="widget_color_red">#DD0000</color>
     <color name="widget_color_purple">#5D00BD</color>

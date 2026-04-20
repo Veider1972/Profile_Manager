@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Менеджер профилей</string>
+    <string name="app_name">Менеджер профиля</string>
 
     // Common text
     <string name="accept">Принять</string>
@@ -19,11 +19,16 @@
     <string name="select_mode_title">Выберите режим</string>
     <string name="mode_day_title">День</string>
     <string name="mode_night_title">Ночь</string>
+    <string name="mode_dont_disturb_title">Не беспокоить</string>
+    <string name="mode_vibro_title">Вибро</string>
+    <string name="mode_silent_title">Бесшумный</string>
+    <string name="mode_quiet_title">Тихий</string>
+    <string name="mode_muted_title">Приглушённый</string>
+    <string name="mode_aloud_title">Громко</string>
 
     // Preference activity
-    <string name="preference_modes">Режимы</string>
-    <string name="preference_tools">Инструменты</string>
-    <string name="preference_widget">Виджет</string>
+    <string name="profile_widget">Виджет</string>
+    <string name="profile_tools">Система</string>
 
     // Tools
     <string name="tools_notification_caption">Значок уведомлений</string>
@@ -44,10 +49,11 @@
     <string name="widget_notification_type_desc_short">Краткий</string>
     <string name="widget_notification_type_desc_none">Без уведомлений</string>
     <string name="widget_background_color_title">Цвет фона</string>                // Цвет фона
-    <string name="widget_background_color_white">Белый</string>
-    <string name="widget_background_color_grey">Серый</string>
-    <string name="widget_background_color_black">Чёрный</string>
-    <string name="widget_background_color_none">Без цвета</string>
+    <string name="white_color">Белый</string>
+    <string name="gray_color">Серый</string>
+    <string name="black_color">Чёрный</string>
+    <string name="transparent_color">Без цвета</string>
+    <string name="custom_color">Свой выбор</string>
     <string name="widget_transparency_title">Прозрачность фона</string>                 // Прозрачность
     <string name="widget_transparency_full">Полная прозрачность</string>
     <string name="widget_transparency_middle">Прозрачность</string>
@@ -60,27 +66,22 @@
     <string name="mode_editor_other_tab_name">Прочее</string>
 
     // InfoTab
-    <string name="profile_name_title">Название профиля</string>
-    <string name="profile_widget_mark_color_title">Цвет значка виджета</string>
-    <string name="profile_widget_ring_color_title">Цвет кольца виджета</string>
-    <string name="profile_widget_symbol_color_blue">Синий</string>
-    <string name="profile_widget_symbol_color_green">Зелёный</string>
-    <string name="profile_widget_symbol_color_yellow">Жёлтый</string>
-    <string name="profile_widget_symbol_color_orange">Оранжевый</string>
-    <string name="profile_widget_symbol_color_red">Красный</string>
-    <string name="profile_widget_symbol_color_purple">Фиолетовый</string>
+    <string name="profile">Профиль</string>
+    <string name="profile_type">Тип профиля</string>
     <string name="profile_use_phone_settings_title">Использовать настройки телефона</string>
     <string name="profile_use_phone_settings_desc">Использовать текущие настройки телефона для создания данного профиля</string>
     <string name="profile_copy_from_other_settings_title">Копировать из другого профиля</string>
     <string name="profile_copy_from_other_settings_desc">Скопировать все настройки из другого профиля</string>
-    <string name="profile_widget_symbol_title">Значок виджета</string>
+    <string name="widget_color">Цвет виджета</string>
+    <string name="widget_background">Фон виджета</string>
+    <string name="widget_symbol">Значок виджета</string>
 
     // SoundsTab
     <string name="profile_volume_title">Управление звуком и вибрацией</string>
     <string name="profile_volume_desc">Отметьте, чтобы профиль управлял уровнем громкости мелодии вызова</string>
     <string name="profile_volume">Громкость</string>
     <string name="profile_volume_common_desc">(Общий)</string>
-    <string name="profile_volume_common">Общая громкость</string>
+    <string name="common_volume">Общая громкость</string>
     <string name="profile_volume_ring">Громкость мелодии звонка</string>
     <string name="profile_volume_notifications">Громкость уведомлений</string>
     <string name="profile_volume_media">Громкость мультимедиа</string>
@@ -115,8 +116,8 @@
     <string name="profile_screen_timeout">Тайм-аут экрана</string>
     <string name="profile_screen_brightness_title">Управление яркостью</string>
     <string name="profile_screen_brightness_desc">Отметьте, чтобы профиль изменял яркость экрана</string>
-    <string name="profile_screen_brightness">Яркость экрана</string>
-    <string name="profile_screen_brightness_auto">Автоматически</string>
+    <string name="screen_brightness">Яркость экрана</string>
+    <string name="auto_brightness">Автоматическая яркость</string>
     <string name="profile_sync_title">Управление синхронизацией</string>
     <string name="profile_sync_desc">Отметьте, чтобы профиль управлял автосинхронизацией</string>
     <string name="profile_sync">Автосинхронизация</string>
@@ -136,9 +137,10 @@
 
     // Диалог ProfileSetVolume
     <string name="dialog_profile_set_volume_title">Настройка громкости</string>
-    <string name="dialog_profile_vibro">Вибрация</string>
+    <string name="vibration">Виброзвонок</string>
+    <string name="vibration_desc">Вибрировать при наступлении события</string>
     <string name="dialog_profile_silence">Без звука</string>
-    <string name="dialog_profile_aloud">Звук</string>
+    <string name="sound">Звук</string>
     <string name="dialog_profile_dont_disturb">Не беспокоить</string>
     <string name="dialog_profile_common_volume_title">Громкость мелодии звонка</string>
     <string name="dialog_profile_common_volume">Общая громкость</string>
@@ -159,6 +161,35 @@
 
     // SetProfile
     <string name="profile_set">Установлен профиль\"%s\"</string>
+
+    // Profiles
+    <string name="change_profile">Изменить"</string>
+    <string name="set_profile">Установить"</string>
+    <string name="error_title">Ошибка!</string>
+    <string name="profile_editor">Редактор профиля</string>
+    <string name="free_profiles">Свободные профили</string>
+    <string name="widget_visual_style">Внешний вид виджета</string>
+    <string name="widget_individual_visual_style">Индивидуальные настройки виджета</string>
+    <string name="widget_common_visual_style">Общие настройки виджета</string>
+    <string name="widget_common_visual_style_comment">Влияет на все виджеты</string>
+
+    //DrawerSheet
+    <string name="my_email">veider@inbox.ru</string>
+    <string name="profiles">Профили звука</string>
+
+    <string name="start">Старт</string>
+    <string name="finish">Финиш</string>
+    <string name="close">Закрыть</string>
+    <string name="guide_volume">Управлять громкостью</string>
+    <string name="guide_vibration">Управлять вибрацией</string>
+    <string name="guide_brightness">Управлять яркостью экрана</string>
+    <string name="rings_volume">Громкость вызовов</string>
+    <string name="notifications_volume">Громкость уведомлений</string>
+    <string name="alarm_volume">Громкость будильника</string>
+    <string name="media_volume">Громкость мультимедиа</string>
+    <string name="sounds_volume">Громкость телефона</string>
+    <string name="attention">Внимание!</string>
+    <string name="ask_to_delete_profile">Вы хотите удалить профиль %s?</string>
 
     // Permissions
     <string name="permission_title">Для корректной работы программы необходимо дать соответствующие разрешения</string>

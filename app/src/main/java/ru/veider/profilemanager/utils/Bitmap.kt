@@ -1,11 +1,16 @@
 package ru.veider.profilemanager.utils
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.LinearGradient
-import android.graphics.Shader
+import android.content.Context
+import android.graphics.*
+import androidx.annotation.*
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RadialGradientShader
+import androidx.compose.ui.unit.Dp
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
+import ru.veider.profilemanager.R
+import kotlin.math.roundToInt
 
 fun gradientCircleBitmap(
     sizePx: Int,
@@ -46,12 +51,74 @@ fun gradientCircleBitmap(
     )
 
     // Рисуем круг с градиентом
-    val paint = android.graphics.Paint().apply {
+    val paint = Paint().apply {
         this.shader = shader
         isAntiAlias = true
     }
 
     canvas.drawCircle(centerX, centerY, radius, paint)
 
+    return bitmap
+}
+
+
+
+/**
+ * Создаёт Bitmap из векторного ресурса с применением указанного цвета
+ * @param context Контекст
+ * @param vectorResId ID векторного ресурса (R.drawable.your_vector)
+ * @param color Цвет для закрашивания (например, Color.RED или ContextCompat.getColor(context, R.color.color_gray))
+ * @param width Желаемая ширина в пикселях (если 0, используется оригинальный размер)
+ * @param height Желаемая высота в пикселях (если 0, используется оригинальный размер)
+ * @return Bitmap с применённым цветом
+ */
+fun drawVector(
+    context: Context,
+    @DrawableRes vectorResId: Int,
+    @ColorInt color: Int,
+    width: Int = 0,
+    height: Int = 0
+): Bitmap {
+    // Получаем исходный drawable
+    val originalDrawable = ContextCompat.getDrawable(context, vectorResId)
+        ?: throw IllegalArgumentException("Resource with ID $vectorResId is not a valid drawable")
+
+    // Создаём копию через mutate(), чтобы не изменять оригинал
+    val drawable = originalDrawable.mutate()
+
+    // Устанавливаем желаемые размеры
+    val targetWidth = if (width > 0) width else drawable.intrinsicWidth
+    val targetHeight = if (height > 0) height else drawable.intrinsicHeight
+
+    // Устанавливаем границы для drawable
+    drawable.setBounds(0, 0, targetWidth, targetHeight)
+
+    // Создаём Bitmap с прозрачным фоном
+    val bitmap = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
+
+    // Применяем цвет через ColorFilter
+    drawable.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+
+    // Рисуем drawable на canvas
+    drawable.draw(canvas)
+
+    return bitmap
+}
+
+fun Context.pointer(sizeF: Float): Bitmap {
+    val size = sizeF.roundToInt()
+    val bitmap = createBitmap(size, size)
+    val canvas = Canvas(bitmap)
+    val shader = RadialGradientShader(
+        Offset(sizeF / 2 * 0.8f,sizeF / 2 * 0.8f),
+        radius = sizeF / 2,
+        listOf(Color(getColor(R.color.color_primary_dark)), Color(getColor(R.color.color_primary)))
+    )
+    val paint = Paint().apply {
+        this.shader = shader
+        isAntiAlias = true
+    }
+    canvas.drawCircle(sizeF / 2, sizeF / 2, sizeF / 2, paint)
     return bitmap
 }

@@ -3,7 +3,7 @@ package ru.veider.profilemanager.utils
 import androidx.compose.ui.geometry.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.unit.*
-import ru.veider.profilemanager.domain.selector.Circle
+import ru.veider.profilemanager.domain.Circle
 import kotlin.math.*
 
 fun createSmoothShape(
@@ -112,13 +112,14 @@ fun createSmoothPath(
         moveTo(touch1Top.x, touch1Top.y)  // Начинаем с верхней точки первой окружности
 
         // 1. Дуга по верхней части первой окружности до нижней точки
-        addArcWithDirection(
-            center = circle1.center,
-            radius = circle1.radius,
-            startAngle = getAngle(circle1.center, touch1Top),
-            endAngle = getAngle(circle1.center, touch1Bottom),
-            clockwise = false
-        )
+        lineTo(touchTop1.x, touchTop1.y)
+//        addArcWithDirection(
+//            center = circle1.center,
+//            radius = circle1.radius,
+//            startAngle = getAngle(circle1.center, touch1Top),
+//            endAngle = getAngle(circle1.center, touch1Bottom),
+//            clockwise = false
+//        )
 
         // 2. Дуга по нижней виртуальной окружности от первой ко второй
         addArcWithDirection(

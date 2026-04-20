@@ -16,4 +16,12 @@ class MainApp:Application() {
             modules(appModule, gsonModule)
         }
     }
+    init{
+        app = this
+    }
+    companion object{
+        lateinit var app: MainApp
+    }
 }
+
+val app get()= MainApp.app
